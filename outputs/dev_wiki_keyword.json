@@ -1,0 +1,319 @@
+{
+ "info": {
+  "split": "dev",
+  "system": "wiki",
+  "method": "keyword",
+  "settings": {
+   "TOP_K": 3,
+   "COVERAGE_THRESHOLD": 0.5,
+   "MAX_SENTENCES": 5,
+   "SENTENCE_CUTOFF": 0.6
+  },
+  "n_chunks": 44,
+  "python": "3.12.3",
+  "packages": {
+   "pymupdf": "2.0",
+   "numpy": "2.4.4",
+   "sentence-transformers": "not installed",
+   "torch": "not installed",
+   "laya": "not installed",
+   "anthropic": "not installed"
+  },
+  "git_commit": "none"
+ },
+ "summary": {
+  "answerable": 5,
+  "retrieval_hits": 4,
+  "correct_answers": 3,
+  "unanswerable": 0,
+  "correct_abstentions": 0,
+  "laya_errors": 0
+ },
+ "results": [
+  {
+   "id": "q1",
+   "question": "Which ship types and hull steel types does this standard generally apply to?",
+   "expected_pages": [
+    4
+   ],
+   "retrieved": [
+    {
+     "rank": 1,
+     "score": 6.0,
+     "id": "materials-and-standards-03",
+     "page": 4,
+     "file": "wiki/materials-and-standards.md",
+     "text": "The standard generally applies to conventional merchant ship types, parts of hull covered by the rules of the Classification Society, and hull structures constructed from normal and higher strength hull structural steel; the applicability of the standard is in each case to be agreed upon by the Classification Society."
+    },
+    {
+     "rank": 2,
+     "score": 6.0,
+     "id": "materials-and-standards-04",
+     "page": 4,
+     "file": "wiki/materials-and-standards.md",
+     "text": "The standard does generally not apply to the new construction of special types of ships as e.g. gas tankers, or structures fabricated from stainless steel or other, special types or grades of steel."
+    },
+    {
+     "rank": 3,
+     "score": 2.0,
+     "id": "materials-and-standards-02",
+     "page": 4,
+     "file": "wiki/materials-and-standards.md",
+     "text": "This standard provides guidance on shipbuilding quality standards for the hull structure during new construction and the remedial standard where the quality standard is not met."
+    }
+   ],
+   "decision": "answer",
+   "answer": "The standard does generally not apply to the new construction of special types of ships as e.g. gas tankers, or structures fabricated from stainless steel or other, special types or grades of steel.",
+   "pages": [
+    4
+   ],
+   "citations": [
+    {
+     "chunk_id": "materials-and-standards-04",
+     "section": "Scope",
+     "pdf_pages": [
+      4
+     ],
+     "wiki_file": "wiki/materials-and-standards.md"
+    }
+   ],
+   "chunk_id": "materials-and-standards-04",
+   "coverage": 0.863,
+   "judgment": {
+    "answerable": true,
+    "retrieval_hit": true,
+    "correct_answer": false,
+    "correct_abstention": null,
+    "failure": "wrong_answer"
+   }
+  },
+  {
+   "id": "q2",
+   "question": "What is the difference between the Standard range and the Limit range?",
+   "expected_pages": [
+    4
+   ],
+   "retrieved": [
+    {
+     "rank": 1,
+     "score": 3.0,
+     "id": "materials-and-standards-01",
+     "page": 4,
+     "file": "wiki/materials-and-standards.md",
+     "text": "It is intended that these standards provide guidance where established and recognized shipbuilding or national standards accepted by the Classification Society do not exist."
+    },
+    {
+     "rank": 2,
+     "score": 3.0,
+     "id": "materials-and-standards-02",
+     "page": 4,
+     "file": "wiki/materials-and-standards.md",
+     "text": "This standard provides guidance on shipbuilding quality standards for the hull structure during new construction and the remedial standard where the quality standard is not met."
+    },
+    {
+     "rank": 3,
+     "score": 3.0,
+     "id": "materials-and-standards-03",
+     "page": 4,
+     "file": "wiki/materials-and-standards.md",
+     "text": "The standard generally applies to conventional merchant ship types, parts of hull covered by the rules of the Classification Society, and hull structures constructed from normal and higher strength hull structural steel; the applicability of the standard is in each case to be agreed upon by the Classification Society."
+    }
+   ],
+   "decision": "answer",
+   "answer": "It is intended that these standards provide guidance where established and recognized shipbuilding or national standards accepted by the Classification Society do not exist.",
+   "pages": [
+    4
+   ],
+   "citations": [
+    {
+     "chunk_id": "materials-and-standards-01",
+     "section": "Scope",
+     "pdf_pages": [
+      4
+     ],
+     "wiki_file": "wiki/materials-and-standards.md"
+    }
+   ],
+   "chunk_id": "materials-and-standards-01",
+   "coverage": 1.0,
+   "judgment": {
+    "answerable": true,
+    "retrieval_hit": false,
+    "correct_answer": false,
+    "correct_abstention": null,
+    "failure": "wrong_answer"
+   }
+  },
+  {
+   "id": "q3",
+   "question": "Which qualification standard is named for welders?",
+   "expected_pages": [
+    5
+   ],
+   "retrieved": [
+    {
+     "rank": 1,
+     "score": 3.0,
+     "id": "welder-qualifications-06",
+     "page": 5,
+     "file": "wiki/welder-qualifications.md",
+     "text": "Welders are to be qualified in accordance with UR W32 (ref. A18) or other recognized standard accepted by the Classification Society."
+    },
+    {
+     "rank": 2,
+     "score": 3.0,
+     "id": "welder-qualifications-07",
+     "page": 5,
+     "file": "wiki/welder-qualifications.md",
+     "text": "Recognition of other standards is subject to submission to the Classification Society for evaluation."
+    },
+    {
+     "rank": 3,
+     "score": 3.0,
+     "id": "welder-qualifications-12",
+     "page": 5,
+     "file": "wiki/welder-qualifications.md",
+     "text": "Welding procedures are to be qualified in accordance with UR W28 (ref. A10) or other recognized standard accepted by the Classification Society."
+    }
+   ],
+   "decision": "answer",
+   "answer": "Welders are to be qualified in accordance with UR W32 (ref. A18) or other recognized standard accepted by the Classification Society.",
+   "pages": [
+    5
+   ],
+   "citations": [
+    {
+     "chunk_id": "welder-qualifications-06",
+     "section": "Qualification of welders",
+     "pdf_pages": [
+      5
+     ],
+     "wiki_file": "wiki/welder-qualifications.md"
+    }
+   ],
+   "chunk_id": "welder-qualifications-06",
+   "coverage": 0.5455,
+   "judgment": {
+    "answerable": true,
+    "retrieval_hit": true,
+    "correct_answer": true,
+    "correct_abstention": null,
+    "failure": null
+   }
+  },
+  {
+   "id": "q4",
+   "question": "Who approves materials used for structural members?",
+   "expected_pages": [
+    5
+   ],
+   "retrieved": [
+    {
+     "rank": 1,
+     "score": 5.0,
+     "id": "materials-and-standards-12",
+     "page": 5,
+     "file": "wiki/materials-and-standards.md",
+     "text": "All materials, including weld consumables, to be used for the structural members are to be approved by the Classification Society as per the approved construction drawings and meet the respective IACS Unified Requirements (see ref. A4, A5, A6, A7, A8, A9 and A17)."
+    },
+    {
+     "rank": 2,
+     "score": 5.0,
+     "id": "materials-and-standards-13",
+     "page": 5,
+     "file": "wiki/materials-and-standards.md",
+     "text": "All materials used should be manufactured at a works approved by the Classification Society for the type and grade supplied."
+    },
+    {
+     "rank": 3,
+     "score": 2.0,
+     "id": "materials-and-standards-03",
+     "page": 4,
+     "file": "wiki/materials-and-standards.md",
+     "text": "The standard generally applies to conventional merchant ship types, parts of hull covered by the rules of the Classification Society, and hull structures constructed from normal and higher strength hull structural steel; the applicability of the standard is in each case to be agreed upon by the Classification Society."
+    }
+   ],
+   "decision": "answer",
+   "answer": "All materials, including weld consumables, to be used for the structural members are to be approved by the Classification Society as per the approved construction drawings and meet the respective IACS Unified Requirements (see ref. A4, A5, A6, A7, A8, A9 and A17).",
+   "pages": [
+    5
+   ],
+   "citations": [
+    {
+     "chunk_id": "materials-and-standards-12",
+     "section": "Materials for structural members",
+     "pdf_pages": [
+      5
+     ],
+     "wiki_file": "wiki/materials-and-standards.md"
+    }
+   ],
+   "chunk_id": "materials-and-standards-12",
+   "coverage": 1.0,
+   "judgment": {
+    "answerable": true,
+    "retrieval_hit": true,
+    "correct_answer": true,
+    "correct_abstention": null,
+    "failure": null
+   }
+  },
+  {
+   "id": "q5",
+   "question": "How is the depth of a surface imperfection measured?",
+   "expected_pages": [
+    6
+   ],
+   "retrieved": [
+    {
+     "rank": 1,
+     "score": 4.0,
+     "id": "surface-quality-and-cutting-03",
+     "page": 6,
+     "file": "wiki/surface-quality-and-cutting.md",
+     "text": "For depth of imperfections or defects: the depth is to be measured from the surface of the product."
+    },
+    {
+     "rank": 2,
+     "score": 2.0,
+     "id": "surface-quality-and-cutting-01",
+     "page": 6,
+     "file": "wiki/surface-quality-and-cutting.md",
+     "text": "Minor imperfections are pitting, rolled-in scale, indentations, roll marks, scratches and grooves."
+    },
+    {
+     "rank": 3,
+     "score": 2.0,
+     "id": "surface-quality-and-cutting-02",
+     "page": 6,
+     "file": "wiki/surface-quality-and-cutting.md",
+     "text": "Defects are cracks, shells, sand patches, sharp edged seams and minor imperfections exceeding the limits of table 1."
+    }
+   ],
+   "decision": "answer",
+   "answer": "For depth of imperfections or defects: the depth is to be measured from the surface of the product.",
+   "pages": [
+    6
+   ],
+   "citations": [
+    {
+     "chunk_id": "surface-quality-and-cutting-03",
+     "section": "Definitions of surface conditions",
+     "pdf_pages": [
+      6
+     ],
+     "wiki_file": "wiki/surface-quality-and-cutting.md"
+    }
+   ],
+   "chunk_id": "surface-quality-and-cutting-03",
+   "coverage": 1.0,
+   "judgment": {
+    "answerable": true,
+    "retrieval_hit": true,
+    "correct_answer": true,
+    "correct_abstention": null,
+    "failure": null
+   }
+  }
+ ]
+}

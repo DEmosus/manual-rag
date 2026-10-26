@@ -1,0 +1,28 @@
+{
+ "status": "not_run",
+ "error": "ModuleNotFoundError(\"No module named 'laya'\")",
+ "split": "dev",
+ "system": "laya",
+ "method": "keyword",
+ "settings": {
+  "TOP_K": 3,
+  "COVERAGE_THRESHOLD": 0.5,
+  "MAX_SENTENCES": 5,
+  "SENTENCE_CUTOFF": 0.6
+ },
+ "n_chunks": 22,
+ "python": "3.12.3",
+ "packages": {
+  "pymupdf": "2.0",
+  "numpy": "2.4.4",
+  "sentence-transformers": "not installed",
+  "torch": "not installed",
+  "laya": "not installed",
+  "anthropic": "not installed"
+ },
+ "git_commit": "none",
+ "laya": {
+  "repo": "convaiinnovations/laya",
+  "subfolder": "typed-decisions"
+ }
+}

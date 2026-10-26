@@ -1,0 +1,266 @@
+[
+ {
+  "id": "p4-1-01",
+  "page": 4,
+  "pages": [
+   4
+  ],
+  "section": "1",
+  "heading": "",
+  "kind": "text",
+  "text": "1. Scope\nIt is intended that these standards provide guidance where established and recognized\nshipbuilding or national standards accepted by the Classification Society do not exist.",
+  "file": null
+ },
+ {
+  "id": "p4-1.1-01",
+  "page": 4,
+  "pages": [
+   4
+  ],
+  "section": "1.1",
+  "heading": "",
+  "kind": "text",
+  "text": "1.1 This standard provides guidance on shipbuilding quality standards for the hull structure\nduring new construction and the remedial standard where the quality standard is not met.\nWhereas the standard generally applies to\n- conventional merchant ship types,\n- parts of hull covered by the rules of the Classification Society,\n- hull structures constructed from normal and higher strength hull structural steel,\nthe applicability of the standard is in each case to be agreed upon by the Classification\nSociety.\nThe standard does generally not apply to the new construction of\n- special types of ships as e.g. gas tankers\n- structures fabricated from stainless steel or other, special types or grades of steel",
+  "file": null
+ },
+ {
+  "id": "p4-1.2-01",
+  "page": 4,
+  "pages": [
+   4
+  ],
+  "section": "1.2",
+  "heading": "",
+  "kind": "text",
+  "text": "1.2 In this standard, both a \"Standard\" range and a \"Limit\" range are listed. The \"Standard\"\nrange represents the target range expected to be met in regular work under normal\ncircumstances. The \"Limit\" range represents the maximum allowable deviation from the\n\"Standard\" range. Work beyond the \"Standard\" range but within the \"Limit\" range is\nacceptable. In cases where no ‘limit’ value is specified, the value beyond the ‘standard’ range\nmay be accepted subject to the consideration of the Classification Society.",
+  "file": null
+ },
+ {
+  "id": "p4-1.3-01",
+  "page": 4,
+  "pages": [
+   4
+  ],
+  "section": "1.3",
+  "heading": "",
+  "kind": "text",
+  "text": "1.3 The standard covers typical construction methods and gives guidance on quality\nstandards for the most important aspects of such construction. Unless explicitly stated\nelsewhere in the standard, the level of workmanship reflected herein will in principle be\nacceptable for primary and secondary structure of conventional designs. A more stringent\nstandard may however be required for critical and highly stressed areas of the hull, and this is\nto be agreed with the Classification Society in each case. In assessing the criticality of hull\nstructure and structural components, reference is made to ref. A1, A2, A3, A11, A13, A14,\nA15, A16, A19 and A21.",
+  "file": null
+ },
+ {
+  "id": "p4-1.4-01",
+  "page": 4,
+  "pages": [
+   4
+  ],
+  "section": "1.4",
+  "heading": "",
+  "kind": "text",
+  "text": "1.4 Details relevant to structures or fabrication procedures not covered by this standard are\nto be approved by the Classification Society on the basis of procedure qualifications and/or\nrecognized national standards.",
+  "file": null
+ },
+ {
+  "id": "p4-1.5-01",
+  "page": 4,
+  "pages": [
+   4
+  ],
+  "section": "1.5",
+  "heading": "",
+  "kind": "text",
+  "text": "1.5 For use of this standard, fabrication fit-ups, deflections and similar quality attributes are\nintended to be uniformly distributed about the nominal values. The shipyard is to take\ncorrective action to improve work processes that produce measurements where a skew\ndistribution is evident. Relying upon remedial steps that truncate a skewed distribution of the\nquality attribute is unacceptable.",
+  "file": null
+ },
+ {
+  "id": "p4-2.1-01",
+  "page": 4,
+  "pages": [
+   4
+  ],
+  "section": "2.1",
+  "heading": "2. General requirements for new construction",
+  "kind": "text",
+  "text": "2.1 In general, the work is to be carried out in accordance with the Classification Society\nrules and under the supervision of the Surveyor to the Classification Society",
+  "file": null
+ },
+ {
+  "id": "p5-2.2-01",
+  "page": 5,
+  "pages": [
+   5
+  ],
+  "section": "2.2",
+  "heading": "",
+  "kind": "text",
+  "text": "2.2 Welding operations are to be carried out in accordance with work instructions accepted\nby the Classification Society.",
+  "file": null
+ },
+ {
+  "id": "p5-2.3-01",
+  "page": 5,
+  "pages": [
+   5
+  ],
+  "section": "2.3",
+  "heading": "",
+  "kind": "text",
+  "text": "2.3 Welding of hull structures is to be carried out by qualified welders, according to\napproved and qualified welding procedures and with welding consumables approved by the\nClassification Society, see Section 3. Welding operations are to be carried out under proper\nsupervision by the shipbuilder. The working conditions for welding are to be monitored by the\nClassification Society in accordance with UR Z23 (ref. A12).",
+  "file": null
+ },
+ {
+  "id": "p5-3.1.1-01",
+  "page": 5,
+  "pages": [
+   5
+  ],
+  "section": "3.1.1",
+  "heading": "3. Qualification of personnel and procedures > 3.1 Qualification of welders",
+  "kind": "text",
+  "text": "3.1.1 Welders are to be qualified in accordance with UR W32 (ref.A18) or other recognized\nstandard accepted by the Classification Society.\nRecognition of other standards is subject to submission to the Classification Society for\nevaluation. Subcontractors are to keep records of welders qualification and, when required,\nfurnish valid approval test certificates.",
+  "file": null
+ },
+ {
+  "id": "p5-3.1.2-01",
+  "page": 5,
+  "pages": [
+   5
+  ],
+  "section": "3.1.2",
+  "heading": "",
+  "kind": "text",
+  "text": "3.1.2 Welding operators using fully mechanized or fully automatic processes need generally\nnot pass approval testing provided that the production welds made by the operators are of the\nrequired quality. However, operators are to receive adequate training in setting or\nprogramming and operating the equipment. Records of training and operation experience\nshall be maintained on individual operator’s files and records, and be made available to the\nClassification Society for inspection when requested.",
+  "file": null
+ },
+ {
+  "id": "p5-3.2-01",
+  "page": 5,
+  "pages": [
+   5
+  ],
+  "section": "3.2",
+  "heading": "",
+  "kind": "text",
+  "text": "3.2 Qualification of welding procedures\nWelding procedures are to be qualified in accordance with UR W28 (ref. A10) or other\nrecognized standard accepted by the Classification Society.",
+  "file": null
+ },
+ {
+  "id": "p5-3.3-01",
+  "page": 5,
+  "pages": [
+   5
+  ],
+  "section": "3.3",
+  "heading": "",
+  "kind": "text",
+  "text": "3.3 Qualification of NDT operators\nPersonnel performing non-destructive testing for the purpose of assessing quality of welds in\nconnection with new construction covered by this standard, are to be qualified in accordance\nwith Classification Society rules or to a recognized international or national qualification\nscheme. Records of operators and their current certificates are to be kept and made available\nto the Surveyor for inspection.\nIn case, of non-destructive examination carried out by an independent firm from the\nshipbuilder, such firm has to comply with UR W35 (Ref.A20).",
+  "file": null
+ },
+ {
+  "id": "p5-4.1-01",
+  "page": 5,
+  "pages": [
+   5
+  ],
+  "section": "4.1",
+  "heading": "4. Materials",
+  "kind": "text",
+  "text": "4.1 Materials for Structural Members\nAll materials, including weld consumables, to be used for the structural members are to be\napproved by the Classification Society as per the approved construction drawings and meet\nthe respective IACS Unified Requirements (see ref. A4, A5, A6, A7, A8, A9 and A17).\nAdditional recommendations are contained in the following paragraphs.\nAll materials used should be manufactured at a works approved by the Classification Society\nfor the type and grade supplied.",
+  "file": null
+ },
+ {
+  "id": "p6-4.2.1-01",
+  "page": 6,
+  "pages": [
+   6
+  ],
+  "section": "4.2.1",
+  "heading": "4.2 Surface Conditions",
+  "kind": "text",
+  "text": "4.2.1 Definitions\nMinor Imperfections: Pitting, rolled-in scale, indentations, roll marks, scratches\nand grooves\nDefects: Cracks, shells, sand patches, sharp edged seams and minor\nimperfections exceeding the limits of table 1\nDepth of Imperfections or The depth is to be measured from the surface of the product\ndefects:",
+  "file": null
+ },
+ {
+  "id": "p6-4.2.2-01",
+  "page": 6,
+  "pages": [
+   6
+  ],
+  "section": "4.2.2",
+  "heading": "",
+  "kind": "text",
+  "text": "4.2.2 Acceptance without remedies\nMinor imperfections, in accordance with the nominal thickness (t) of the product and the limits\ndescribed in Table 1, are permissible and may be left as they are.\nImperfection surface area Ratio(%) 15～20% 5～15% 0～5%\nt < 20 mm 0.2 mm 0.4 mm 0.5 mm\n20 mm ≤ t < 50 mm 0.2 mm 0.6 mm 0.7 mm\n50 mm ≤ t 0.2 mm 0.7 mm 0.9 mm\nTable 1 Limits for depth of minor imperfection, for acceptance without remedies",
+  "file": null
+ },
+ {
+  "id": "p7-4.2.2-01",
+  "page": 7,
+  "pages": [
+   7
+  ],
+  "section": "4.2.2",
+  "heading": "",
+  "kind": "text",
+  "text": "Imperfection surface area Ratio (%) is obtained as influenced area / area under consideration\n(i.e. plate surface area) x 100%.\nFor isolated surface discontinuities, influenced area is obtained by drawing a continuous line\nwhich follows the circumference of the discontinuity at a distance of 20 mm. (Figure 1)\nFor surface discontinuities appearing in a cluster, influenced area is obtained by drawing a\ncontinuous line which follows the circumference of the cluster at a distance of 20 mm. (Figure\n2)\nFigure 1 - Determination of the area influenced by an isolated\ndiscontinuity\n(EN 10163-1:2004)\nFigure 2 - Determination of the area influenced by clustered discontinuities\n(EN 10163-1:2004)",
+  "file": null
+ },
+ {
+  "id": "p8-4.2.3-01",
+  "page": 8,
+  "pages": [
+   8
+  ],
+  "section": "4.2.3",
+  "heading": "",
+  "kind": "text",
+  "text": "4.2.3 Remedial of Defects\nDefects are to be remedied by grinding and/or welding in accordance with IACS UR W11 (ref.\nA6).",
+  "file": null
+ },
+ {
+  "id": "p8-4.2.4.1-01",
+  "page": 8,
+  "pages": [
+   8
+  ],
+  "section": "4.2.4.1",
+  "heading": "4.2.4 Further Defects",
+  "kind": "text",
+  "text": "4.2.4.1 Lamination\nInvestigation to be carried out at the steelmill into the cause and extent of the detected\nlaminations. Severe lamination is to be remedied by local insert plates. The minimum breadth\nor length of the plate to be replaced is to be:\n- 1600 mm for shell and strength deck plating in way of cruciform or T-joints,\n- 800 mm for shell, strength deck plating and other primary members,\n- 300 mm for other structural members.\nLocal limited lamination may be remedied by chipping and/or grinding followed by welding in\naccordance with sketch (a). In case where the local limited lamination is near the plate\nsurface, the remedial may be carried out as shown in sketch (b). For limitations see\nparagraph 4.2.2.",
+  "file": null
+ },
+ {
+  "id": "p8-4.2.4.2-01",
+  "page": 8,
+  "pages": [
+   8
+  ],
+  "section": "4.2.4.2",
+  "heading": "",
+  "kind": "text",
+  "text": "4.2.4.2 Weld Spatters\nLoose weld spatters are to be removed by grinding or other measures to clean metal surface\n(see Table 9.13), as required by the paint system, on:\n- shell plating\n- deck plating on exposed decks\n- in tanks for chemical cargoes\n- in tanks for fresh water and for drinking water\n- in tanks for lubricating oil, hydraulic oil, including service tanks",
+  "file": null
+ },
+ {
+  "id": "p8-5-01",
+  "page": 8,
+  "pages": [
+   8
+  ],
+  "section": "5",
+  "heading": "",
+  "kind": "table",
+  "text": "5. Gas Cutting\nThe roughness of the cut edges is to meet the following requirements:\nFree Edges:\nStandard Limit\nStrength Members 150 µm 300 µm\nOthers 500 µm 1000 µm",
+  "file": null
+ },
+ {
+  "id": "p8-5-02",
+  "page": 8,
+  "pages": [
+   8
+  ],
+  "section": "5",
+  "heading": "",
+  "kind": "table",
+  "text": "5. Gas Cutting\nThe roughness of the cut edges is to meet the following requirements:\nWelding Edges:\nStandard Limit\nStrength Members 400 µm 800 µm\nOthers 800 µm 1500 µm",
+  "file": null
+ }
+]
