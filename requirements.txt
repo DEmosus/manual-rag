@@ -1,0 +1,4 @@
+# core (keyword RAG, wiki extension, tests)
+pymupdf
+numpy
+pytest

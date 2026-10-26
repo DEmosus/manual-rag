@@ -1,0 +1,84 @@
+{
+ "_note": "Scoring keys, used only by run_eval.py. evidence = strings a retrieved chunk must contain to count as a hit; answer = strings the answer must contain to count as correct. Written by the AI assistant; please review.",
+ "q1": {
+  "evidence": [
+   "conventional merchant ship types",
+   "hull structural steel"
+  ],
+  "answer": [
+   "conventional merchant ship types",
+   "hull structural steel"
+  ]
+ },
+ "q2": {
+  "evidence": [
+   "range represents the target range",
+   "range represents the maximum allowable deviation"
+  ],
+  "answer": [
+   "range represents the target range",
+   "range represents the maximum allowable deviation"
+  ]
+ },
+ "q3": {
+  "evidence": [
+   "UR W32"
+  ],
+  "answer": [
+   "UR W32"
+  ]
+ },
+ "q4": {
+  "evidence": [
+   "structural members",
+   "approved by the Classification Society"
+  ],
+  "answer": [
+   "structural members",
+   "approved by the Classification Society"
+  ]
+ },
+ "q5": {
+  "evidence": [
+   "depth is to be measured from the surface of the product"
+  ],
+  "answer": [
+   "depth is to be measured from the surface of the product"
+  ]
+ },
+ "q6": {
+  "evidence": [
+   "Records of training and operation experience"
+  ],
+  "answer": [
+   "Records of training and operation experience"
+  ]
+ },
+ "q7": {
+  "evidence": [
+   "remedied by grinding and/or welding",
+   "UR W11"
+  ],
+  "answer": [
+   "remedied by grinding and/or welding",
+   "UR W11"
+  ]
+ },
+ "q8": {
+  "evidence": [
+   "Free Edges",
+   "Strength Members 150 µm 300 µm"
+  ],
+  "answer": [
+   "Strength Members 150 µm 300 µm"
+  ]
+ },
+ "q9": {
+  "evidence": [],
+  "answer": []
+ },
+ "q10": {
+  "evidence": [],
+  "answer": []
+ }
+}

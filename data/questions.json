@@ -1,0 +1,12 @@
+[
+  {"id": "q1", "question": "Which ship types and hull steel types does this standard generally apply to?", "relevant_pdf_pages": [4], "split": "dev"},
+  {"id": "q2", "question": "What is the difference between the Standard range and the Limit range?", "relevant_pdf_pages": [4], "split": "dev"},
+  {"id": "q3", "question": "Which qualification standard is named for welders?", "relevant_pdf_pages": [5], "split": "dev"},
+  {"id": "q4", "question": "Who approves materials used for structural members?", "relevant_pdf_pages": [5], "split": "dev"},
+  {"id": "q5", "question": "How is the depth of a surface imperfection measured?", "relevant_pdf_pages": [6], "split": "dev"},
+  {"id": "q6", "question": "What training records must be kept for operators using fully mechanized or fully automatic welding processes?", "relevant_pdf_pages": [5], "split": "test"},
+  {"id": "q7", "question": "How should surface defects be remedied, and which IACS requirement is referenced?", "relevant_pdf_pages": [8], "split": "test"},
+  {"id": "q8", "question": "For gas-cut free edges on strength members, what are the Standard and Limit roughness values?", "relevant_pdf_pages": [8], "split": "test"},
+  {"id": "q9", "question": "What is the purchase price of a steel plate from EXTAA supplier A?", "relevant_pdf_pages": [], "split": "test"},
+  {"id": "q10", "question": "What is the emergency telephone number for the shipyard?", "relevant_pdf_pages": [], "split": "test"}
+]
