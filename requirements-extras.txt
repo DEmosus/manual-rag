@@ -1,0 +1,6 @@
+# only for embedding retrieval (downloads sentence-transformers/all-MiniLM-L6-v2)
+sentence-transformers
+# only for Extension 1 (Laya; downloads convaiinnovations/laya weights, needs torch)
+laya==0.4.15   # the version whose README I read; never executed in the build sandbox
+# only for regenerating the wiki with an API (make_wiki.py)
+anthropic
