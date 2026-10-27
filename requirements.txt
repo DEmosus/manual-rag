@@ -1,4 +1,4 @@
-# core (keyword RAG, wiki extension, tests)
-pymupdf
-numpy
-pytest
+# versions below are the ones this project was built and tested with (Python 3.12.3)
+pymupdf==2.0
+numpy==2.4.4
+pytest==9.1.1

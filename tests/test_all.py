@@ -131,7 +131,7 @@ def test_judge_unanswerable_and_laya_error_not_counted():
     assert judge(uq, [], abst, {})["correct_abstention"]
     err = judge(uq, [], abst, {}, laya_error=True)
     assert not err["correct_abstention"] and err["failure"] == "laya_error"
-    assert summarize([{"judgment": err, "laya": {"error": "boom"}}])["laya_errors"] == 1
+    assert summarize([{"judgment": err, "laya_decision": {"label": "abstain", "error": "boom"}}])["laya_errors"] == 1
 
 
 # ---- Extension 1 (logic only; a fake agent stands in, this is NOT a Laya run)
@@ -204,7 +204,10 @@ def test_real_pdf_pages_and_gas_cutting_table():
 
 
 # ---- Extension 1 wiring end to end (fake agent: checks OUR code path only, it is NOT a Laya run)
-@pytest.mark.skipif(not Path(config.PDF_PATH).exists(), reason="PDF not present")
+needs_pdf = pytest.mark.skipif(not Path(config.PDF_PATH).exists(), reason="PDF not present")
+
+
+@needs_pdf
 @pytest.mark.parametrize("agent_kwargs, expect_errors", [({"label": "abstain"}, 0), ({"boom": True}, 5)])
 def test_laya_pipeline_path(monkeypatch, tmp_path, agent_kwargs, expect_errors):
     import laya_gate
@@ -212,8 +215,40 @@ def test_laya_pipeline_path(monkeypatch, tmp_path, agent_kwargs, expect_errors):
     monkeypatch.setattr(run_eval, "OUT", tmp_path)
     real = laya_gate.LayaGate
     monkeypatch.setattr(laya_gate, "LayaGate", lambda: real(FakeAgent(**agent_kwargs)))
-    summary = run_eval.evaluate("test", "laya", "keyword")
-    saved = json.loads((tmp_path / "test_laya_keyword.json").read_text())
+    summary = run_eval.evaluate("dev", "laya", "keyword")
+    log = json.loads((tmp_path / "dev_laya_keyword_laya_log.json").read_text())
     assert summary["laya_errors"] == expect_errors and summary["correct_answers"] == 0
-    assert saved["results"][0]["laya"]["input"].startswith("Question:")          # Laya input is saved
-    assert summary["correct_abstentions"] == (2 if expect_errors == 0 else 0)    # error-abstentions never count as correct
+    assert log["entries"][0]["input"].startswith("Question:") and len(log["entries"]) == 5     # Laya input saved separately
+    assert (log["entries"][0]["error"] is not None) == bool(expect_errors)
+    assert len(log["question_prompt_sha256"]) == 64
+
+
+@needs_pdf
+def test_output_follows_decision_contract(monkeypatch, tmp_path):
+    import run_eval
+    monkeypatch.setattr(run_eval, "OUT", tmp_path)
+    run_eval.evaluate("dev", "pdf", "keyword")
+    rec = json.loads((tmp_path / "dev_pdf_keyword.json").read_text())["results"][2]
+    for field in ("question_id", "retrieved_chunks", "decision", "answer", "supporting_pdf_pages"):
+        assert field in rec
+    assert len(rec["retrieved_chunks"]) == 3 and {"chunk_id", "pdf_page", "text"} <= set(rec["retrieved_chunks"][0])
+    assert (tmp_path / "dev_pdf_keyword.md").read_text().startswith("Question:")   # readable example format
+    with pytest.raises(AssertionError):                                           # contract: answer needs pages
+        run_eval.check_contract({**rec, "decision": "answer", "supporting_pdf_pages": []})
+
+
+@needs_pdf
+def test_freeze_guard(monkeypatch, tmp_path):
+    import run_eval
+    monkeypatch.setattr(run_eval, "OUT", tmp_path)
+    with pytest.raises(SystemExit):                                               # no dev run yet
+        run_eval.evaluate("test", "pdf", "keyword")
+    run_eval.evaluate("dev", "pdf", "keyword")
+    run_eval.evaluate("test", "pdf", "keyword")                                   # allowed: dev fingerprint matches
+    with pytest.raises(SystemExit):                                               # finished test result is not overwritten
+        run_eval.evaluate("test", "pdf", "keyword")
+    (tmp_path / "test_pdf_keyword.json").unlink()
+    monkeypatch.setattr(config, "COVERAGE_THRESHOLD", 0.9)                        # settings changed after dev...
+    monkeypatch.setattr(run_eval, "fingerprint", lambda s: {"combined": "different", "files": {}})
+    with pytest.raises(SystemExit):                                               # ...so test is refused
+        run_eval.evaluate("test", "pdf", "keyword")

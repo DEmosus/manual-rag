@@ -1,0 +1,10 @@
+{
+ "enough_evidence": {
+  "type": "choice",
+  "instructions": "Does the evidence text state the specific fact the question asks for? Topic overlap alone is not enough.",
+  "criteria": {
+   "answer": "the evidence states the specific fact the question asks for",
+   "abstain": "the evidence does not state the specific fact asked for"
+  }
+ }
+}

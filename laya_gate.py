@@ -3,14 +3,13 @@
 Laya (https://github.com/NandhaKishorM/laya, `pip install laya`) reads a text 'state' plus typed questions and returns
 a typed answer in one forward pass. Here: ONE 'choice' question with two labels, 'answer' / 'abstain'.
 Rules: if Laya fails for any reason -> abstain and record the error (never counted as a correct abstention)."""
+import json
+from pathlib import Path
+
 import config
 
-QUESTIONS = {"enough_evidence": {
-    "type": "choice",
-    "instructions": "Does the evidence text state the specific fact the question asks for? "
-                    "Topic overlap alone is not enough.",
-    "criteria": {"answer": "the evidence states the specific fact the question asks for",
-                 "abstain": "the evidence does not state the specific fact asked for"}}}
+# the typed question lives in prompts/laya_question.json so it can be hashed and frozen before the test run
+QUESTIONS = json.loads(Path("prompts/laya_question.json").read_text(encoding="utf-8"))
 
 
 def build_state(question, retrieved):
