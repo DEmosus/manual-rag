@@ -1,0 +1,167 @@
+{
+ "laya_version": "0.4.15",
+ "checkpoint": "convaiinnovations/laya / typed-decisions",
+ "question_prompt_sha256": "c23bfb08f6a415d88fc4726e237dd714d009eec256d065564fedb3bf7a7438e6",
+ "entries": [
+  {
+   "question_id": "q6",
+   "label": "answer",
+   "error": null,
+   "input": "Question: What training records must be kept for operators using fully mechanized or fully automatic welding processes?\n\nEvidence 1 (PDF page 5): 3.1.2 Welding operators using fully mechanized or fully automatic processes need generally\nnot pass approval testing provided that the production welds made by the operators are of the\nrequired quality. However, operators are to receive adequate training in setting or\nprogramming and operating the equipment. Records of training and operation experience\nshall be maintained on individual operator’s files and records, and be made available to the\nClassification Society for inspection when requested.\n\nEvidence 2 (PDF page 5): 3.3 Qualification of NDT operators\nPersonnel performing non-destructive testing for the purpose of assessing quality of welds in\nconnection with new construction covered by this standard, are to be qualified in accordance\nwith Classification Society rules or to a recognized international or national qualification\nscheme. Records of operators and their current certificates are to be kept and made available\nto the Surveyor for inspection.\nIn case, of non-destructive examination carried out by an independent firm from the\nshipbuilder, such firm has to comply with UR W35 (Ref.A20).\n\nEvidence 3 (PDF page 4): 1.5 For use of this standard, fabrication fit-ups, deflections and similar quality attributes are\nintended to be uniformly distributed about the nominal values. The shipyard is to take\ncorrective action to improve work processes that produce measurements where a skew\ndistribution is evident. Relying upon remedial steps that truncate a skewed distribution of the\nquality attribute is unacceptable.",
+   "output": {
+    "model": "laya-rl-agent",
+    "answers": {
+     "enough_evidence": {
+      "type": "choice",
+      "choice": "answer",
+      "probabilities": {
+       "answer": 0.7876,
+       "abstain": 0.2124
+      },
+      "confidence": 0.254,
+      "answer_confidence": 0.7876,
+      "action": {
+       "act_probability": 1.0
+      }
+     }
+    },
+    "usage": {
+     "input_tokens": 392,
+     "output_tokens": 0,
+     "state_tokens": 337,
+     "state_tokens_dropped": 0,
+     "truncated": false,
+     "truncated_questions": []
+    }
+   }
+  },
+  {
+   "question_id": "q7",
+   "label": "answer",
+   "error": null,
+   "input": "Question: How should surface defects be remedied, and which IACS requirement is referenced?\n\nEvidence 1 (PDF page 8): 4.2.3 Remedial of Defects\nDefects are to be remedied by grinding and/or welding in accordance with IACS UR W11 (ref.\nA6).\n\nEvidence 2 (PDF page 8): 4.2.4.1 Lamination\nInvestigation to be carried out at the steelmill into the cause and extent of the detected\nlaminations. Severe lamination is to be remedied by local insert plates. The minimum breadth\nor length of the plate to be replaced is to be:\n- 1600 mm for shell and strength deck plating in way of cruciform or T-joints,\n- 800 mm for shell, strength deck plating and other primary members,\n- 300 mm for other structural members.\nLocal limited lamination may be remedied by chipping and/or grinding followed by welding in\naccordance with sketch (a). In case where the local limited lamination is near the plate\nsurface, the remedial may be carried out as shown in sketch (b). For limitations see\nparagraph 4.2.2.\n\nEvidence 3 (PDF page 5): 4.1 Materials for Structural Members\nAll materials, including weld consumables, to be used for the structural members are to be\napproved by the Classification Society as per the approved construction drawings and meet\nthe respective IACS Unified Requirements (see ref. A4, A5, A6, A7, A8, A9 and A17).\nAdditional recommendations are contained in the following paragraphs.\nAll materials used should be manufactured at a works approved by the Classification Society\nfor the type and grade supplied.",
+   "output": {
+    "model": "laya-rl-agent",
+    "answers": {
+     "enough_evidence": {
+      "type": "choice",
+      "choice": "answer",
+      "probabilities": {
+       "answer": 0.7526,
+       "abstain": 0.2474
+      },
+      "confidence": 0.1929,
+      "answer_confidence": 0.7526,
+      "action": {
+       "act_probability": 1.0
+      }
+     }
+    },
+    "usage": {
+     "input_tokens": 425,
+     "output_tokens": 0,
+     "state_tokens": 370,
+     "state_tokens_dropped": 0,
+     "truncated": false,
+     "truncated_questions": []
+    }
+   }
+  },
+  {
+   "question_id": "q8",
+   "label": "abstain",
+   "error": null,
+   "input": "Question: For gas-cut free edges on strength members, what are the Standard and Limit roughness values?\n\nEvidence 1 (PDF page 8): 5. Gas Cutting\nThe roughness of the cut edges is to meet the following requirements:\nFree Edges:\nStandard Limit\nStrength Members 150 µm 300 µm\nOthers 500 µm 1000 µm\n\nEvidence 2 (PDF page 8): 5. Gas Cutting\nThe roughness of the cut edges is to meet the following requirements:\nWelding Edges:\nStandard Limit\nStrength Members 400 µm 800 µm\nOthers 800 µm 1500 µm\n\nEvidence 3 (PDF page 4): 1.1 This standard provides guidance on shipbuilding quality standards for the hull structure\nduring new construction and the remedial standard where the quality standard is not met.\nWhereas the standard generally applies to\n- conventional merchant ship types,\n- parts of hull covered by the rules of the Classification Society,\n- hull structures constructed from normal and higher strength hull structural steel,\nthe applicability of the standard is in each case to be agreed upon by the Classification\nSociety.\nThe standard does generally not apply to the new construction of\n- special types of ships as e.g. gas tankers\n- structures fabricated from stainless steel or other, special types or grades of steel",
+   "output": {
+    "model": "laya-rl-agent",
+    "answers": {
+     "enough_evidence": {
+      "type": "choice",
+      "choice": "abstain",
+      "probabilities": {
+       "answer": 0.3476,
+       "abstain": 0.6524
+      },
+      "confidence": 0.0681,
+      "answer_confidence": 0.6524,
+      "action": {
+       "act_probability": 1.0
+      }
+     }
+    },
+    "usage": {
+     "input_tokens": 326,
+     "output_tokens": 0,
+     "state_tokens": 271,
+     "state_tokens_dropped": 0,
+     "truncated": false,
+     "truncated_questions": []
+    }
+   }
+  },
+  {
+   "question_id": "q9",
+   "label": "abstain",
+   "error": null,
+   "input": "Question: What is the purchase price of a steel plate from EXTAA supplier A?\n\nEvidence 1 (PDF page 4): 1.1 This standard provides guidance on shipbuilding quality standards for the hull structure\nduring new construction and the remedial standard where the quality standard is not met.\nWhereas the standard generally applies to\n- conventional merchant ship types,\n- parts of hull covered by the rules of the Classification Society,\n- hull structures constructed from normal and higher strength hull structural steel,\nthe applicability of the standard is in each case to be agreed upon by the Classification\nSociety.\nThe standard does generally not apply to the new construction of\n- special types of ships as e.g. gas tankers\n- structures fabricated from stainless steel or other, special types or grades of steel\n\nEvidence 2 (PDF page 7): Imperfection surface area Ratio (%) is obtained as influenced area / area under consideration\n(i.e. plate surface area) x 100%.\nFor isolated surface discontinuities, influenced area is obtained by drawing a continuous line\nwhich follows the circumference of the discontinuity at a distance of 20 mm. (Figure 1)\nFor surface discontinuities appearing in a cluster, influenced area is obtained by drawing a\ncontinuous line which follows the circumference of the cluster at a distance of 20 mm. (Figure\n2)\nFigure 1 - Determination of the area influenced by an isolated\ndiscontinuity\n(EN 10163-1:2004)\nFigure 2 - Determination of the area influenced by clustered discontinuities\n(EN 10163-1:2004)\n\nEvidence 3 (PDF page 8): 4.2.4.1 Lamination\nInvestigation to be carried out at the steelmill into the cause and extent of the detected\nlaminations. Severe lamination is to be remedied by local insert plates. The minimum breadth\nor length of the plate to be replaced is to be:\n- 1600 mm for shell and strength deck plating in way of cruciform or T-joints,\n- 800 mm for shell, strength deck plating and other primary members,\n- 300 mm for other structural members.\nLocal limited lamination may be remedied by chipping and/or grinding followed by welding in\naccordance with sketch (a). In case where the local limited lamination is near the plate\nsurface, the remedial may be carried out as shown in sketch (b). For limitations see\nparagraph 4.2.2.",
+   "output": {
+    "model": "laya-rl-agent",
+    "answers": {
+     "enough_evidence": {
+      "type": "choice",
+      "choice": "abstain",
+      "probabilities": {
+       "answer": 0.3198,
+       "abstain": 0.6802
+      },
+      "confidence": 0.0958,
+      "answer_confidence": 0.6802,
+      "action": {
+       "act_probability": 1.0
+      }
+     }
+    },
+    "usage": {
+     "input_tokens": 567,
+     "output_tokens": 0,
+     "state_tokens": 512,
+     "state_tokens_dropped": 0,
+     "truncated": false,
+     "truncated_questions": []
+    }
+   }
+  },
+  {
+   "question_id": "q10",
+   "label": "abstain",
+   "error": null,
+   "input": "Question: What is the emergency telephone number for the shipyard?\n\nEvidence 1 (PDF page 4): 1.5 For use of this standard, fabrication fit-ups, deflections and similar quality attributes are\nintended to be uniformly distributed about the nominal values. The shipyard is to take\ncorrective action to improve work processes that produce measurements where a skew\ndistribution is evident. Relying upon remedial steps that truncate a skewed distribution of the\nquality attribute is unacceptable.\n\nEvidence 2 (PDF page 4): 1. Scope\nIt is intended that these standards provide guidance where established and recognized\nshipbuilding or national standards accepted by the Classification Society do not exist.\n\nEvidence 3 (PDF page 4): 1.1 This standard provides guidance on shipbuilding quality standards for the hull structure\nduring new construction and the remedial standard where the quality standard is not met.\nWhereas the standard generally applies to\n- conventional merchant ship types,\n- parts of hull covered by the rules of the Classification Society,\n- hull structures constructed from normal and higher strength hull structural steel,\nthe applicability of the standard is in each case to be agreed upon by the Classification\nSociety.\nThe standard does generally not apply to the new construction of\n- special types of ships as e.g. gas tankers\n- structures fabricated from stainless steel or other, special types or grades of steel",
+   "output": {
+    "model": "laya-rl-agent",
+    "answers": {
+     "enough_evidence": {
+      "type": "choice",
+      "choice": "abstain",
+      "probabilities": {
+       "answer": 0.2546,
+       "abstain": 0.7454
+      },
+      "confidence": 0.1815,
+      "answer_confidence": 0.7454,
+      "action": {
+       "act_probability": 1.0
+      }
+     }
+    },
+    "usage": {
+     "input_tokens": 345,
+     "output_tokens": 0,
+     "state_tokens": 290,
+     "state_tokens_dropped": 0,
+     "truncated": false,
+     "truncated_questions": []
+    }
+   }
+  }
+ ]
+}

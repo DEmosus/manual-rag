@@ -1,0 +1,322 @@
+{
+ "info": {
+  "split": "test",
+  "system": "pdf",
+  "method": "keyword",
+  "fingerprint": {
+   "combined": "55a8779425abef8aa9294a7eb7d2f93ccd0619164589ad07cd018e92bf8dd06a",
+   "files": {
+    "config.py": "8ea4ce9a090138f26cbf59b1ab5ebc1bb7aada27d4957f2ed8db63b280c760fe",
+    "retrieve.py": "4882c049e8a227a51b54e2725ff086b31d2d67ae1d3c55f814cec644ec7062fe",
+    "answer.py": "d9e86472a167ea7c26b0fce768c0a765d3f8c6bdf31bbc151d06fa0b69dc5ba6",
+    "pdf_to_chunks.py": "cd5e7fc2b3b570c2314837beb91c9aa4fc8bb3d013c5da7154e31c23ff55cfaf",
+    "data/questions.json": "143ef2468f34da975110244dc10e2a1cc5c4dbcac53c973b118b8b5c2579c3cd",
+    "data/answer_keys.json": "817dc67bc462f41b4e5f5fcdef826f8ddfc3e2ea0efff2228c56d4cf9dac1125"
+   }
+  },
+  "settings": {
+   "TOP_K": 3,
+   "COVERAGE_THRESHOLD": 0.5,
+   "MAX_SENTENCES": 5,
+   "SENTENCE_CUTOFF": 0.6
+  },
+  "n_chunks": 22,
+  "python": "3.13.3",
+  "packages": {
+   "pymupdf": "2.0",
+   "numpy": "2.4.4",
+   "sentence-transformers": "6.2.0",
+   "transformers": "5.21.0",
+   "huggingface-hub": "2.3.0",
+   "torch": "2.14.1",
+   "laya": "0.4.15"
+  },
+  "git_commit": "0f1116ae1388ea37111cb01192443208a37f0ec8"
+ },
+ "summary": {
+  "answerable": 3,
+  "retrieval_hits": 3,
+  "correct_answers": 2,
+  "unanswerable": 2,
+  "correct_abstentions": 2,
+  "laya_errors": 0,
+  "top3_on_expected_page": 6,
+  "top3_total": 9
+ },
+ "results": [
+  {
+   "question_id": "q6",
+   "split": "test",
+   "system": "pdf",
+   "method": "keyword",
+   "question": "What training records must be kept for operators using fully mechanized or fully automatic welding processes?",
+   "expected_pdf_pages": [
+    5
+   ],
+   "retrieved_chunks": [
+    {
+     "rank": 1,
+     "chunk_id": "p5-3.1.2-01",
+     "pdf_page": 5,
+     "score": 9.0,
+     "wiki_file": null,
+     "text": "3.1.2 Welding operators using fully mechanized or fully automatic processes need generally\nnot pass approval testing provided that the production welds made by the operators are of the\nrequired quality. However, operators are to receive adequate training in setting or\nprogramming and operating the equipment. Records of training and operation experience\nshall be maintained on individual operator’s files and records, and be made available to the\nClassification Society for inspection when requested."
+    },
+    {
+     "rank": 2,
+     "chunk_id": "p5-3.3-01",
+     "pdf_page": 5,
+     "score": 4.0,
+     "wiki_file": null,
+     "text": "3.3 Qualification of NDT operators\nPersonnel performing non-destructive testing for the purpose of assessing quality of welds in\nconnection with new construction covered by this standard, are to be qualified in accordance\nwith Classification Society rules or to a recognized international or national qualification\nscheme. Records of operators and their current certificates are to be kept and made available\nto the Surveyor for inspection.\nIn case, of non-destructive examination carried out by an independent firm from the\nshipbuilder, such firm has to comply with UR W35 (Ref.A20)."
+    },
+    {
+     "rank": 3,
+     "chunk_id": "p4-1.5-01",
+     "pdf_page": 4,
+     "score": 1.0,
+     "wiki_file": null,
+     "text": "1.5 For use of this standard, fabrication fit-ups, deflections and similar quality attributes are\nintended to be uniformly distributed about the nominal values. The shipyard is to take\ncorrective action to improve work processes that produce measurements where a skew\ndistribution is evident. Relying upon remedial steps that truncate a skewed distribution of the\nquality attribute is unacceptable."
+    }
+   ],
+   "decision": "answer",
+   "answer": "3.1.2 Welding operators using fully mechanized or fully automatic processes need generally not pass approval testing provided that the production welds made by the operators are of the required quality.",
+   "supporting_pdf_pages": [
+    5
+   ],
+   "citations": [
+    {
+     "chunk_id": "p5-3.1.2-01",
+     "section": "3.1.2",
+     "pdf_pages": [
+      5
+     ],
+     "wiki_file": null
+    }
+   ],
+   "coverage": 0.8897,
+   "laya_decision": null,
+   "judgment": {
+    "answerable": true,
+    "retrieval_hit": true,
+    "correct_answer": false,
+    "correct_abstention": null,
+    "failure": "wrong_answer"
+   }
+  },
+  {
+   "question_id": "q7",
+   "split": "test",
+   "system": "pdf",
+   "method": "keyword",
+   "question": "How should surface defects be remedied, and which IACS requirement is referenced?",
+   "expected_pdf_pages": [
+    8
+   ],
+   "retrieved_chunks": [
+    {
+     "rank": 1,
+     "chunk_id": "p8-4.2.3-01",
+     "pdf_page": 8,
+     "score": 3.0,
+     "wiki_file": null,
+     "text": "4.2.3 Remedial of Defects\nDefects are to be remedied by grinding and/or welding in accordance with IACS UR W11 (ref.\nA6)."
+    },
+    {
+     "rank": 2,
+     "chunk_id": "p8-4.2.4.1-01",
+     "pdf_page": 8,
+     "score": 3.0,
+     "wiki_file": null,
+     "text": "4.2.4.1 Lamination\nInvestigation to be carried out at the steelmill into the cause and extent of the detected\nlaminations. Severe lamination is to be remedied by local insert plates. The minimum breadth\nor length of the plate to be replaced is to be:\n- 1600 mm for shell and strength deck plating in way of cruciform or T-joints,\n- 800 mm for shell, strength deck plating and other primary members,\n- 300 mm for other structural members.\nLocal limited lamination may be remedied by chipping and/or grinding followed by welding in\naccordance with sketch (a). In case where the local limited lamination is near the plate\nsurface, the remedial may be carried out as shown in sketch (b). For limitations see\nparagraph 4.2.2."
+    },
+    {
+     "rank": 3,
+     "chunk_id": "p5-4.1-01",
+     "pdf_page": 5,
+     "score": 2.0,
+     "wiki_file": null,
+     "text": "4.1 Materials for Structural Members\nAll materials, including weld consumables, to be used for the structural members are to be\napproved by the Classification Society as per the approved construction drawings and meet\nthe respective IACS Unified Requirements (see ref. A4, A5, A6, A7, A8, A9 and A17).\nAdditional recommendations are contained in the following paragraphs.\nAll materials used should be manufactured at a works approved by the Classification Society\nfor the type and grade supplied."
+    }
+   ],
+   "decision": "answer",
+   "answer": "4.2.3 Remedial of Defects Defects are to be remedied by grinding and/or welding in accordance with IACS UR W11 (ref. A6).",
+   "supporting_pdf_pages": [
+    8
+   ],
+   "citations": [
+    {
+     "chunk_id": "p8-4.2.3-01",
+     "section": "4.2.3",
+     "pdf_pages": [
+      8
+     ],
+     "wiki_file": null
+    }
+   ],
+   "coverage": 0.5149,
+   "laya_decision": null,
+   "judgment": {
+    "answerable": true,
+    "retrieval_hit": true,
+    "correct_answer": true,
+    "correct_abstention": null,
+    "failure": null
+   }
+  },
+  {
+   "question_id": "q8",
+   "split": "test",
+   "system": "pdf",
+   "method": "keyword",
+   "question": "For gas-cut free edges on strength members, what are the Standard and Limit roughness values?",
+   "expected_pdf_pages": [
+    8
+   ],
+   "retrieved_chunks": [
+    {
+     "rank": 1,
+     "chunk_id": "p8-5-01",
+     "pdf_page": 8,
+     "score": 9.0,
+     "wiki_file": null,
+     "text": "5. Gas Cutting\nThe roughness of the cut edges is to meet the following requirements:\nFree Edges:\nStandard Limit\nStrength Members 150 µm 300 µm\nOthers 500 µm 1000 µm"
+    },
+    {
+     "rank": 2,
+     "chunk_id": "p8-5-02",
+     "pdf_page": 8,
+     "score": 8.0,
+     "wiki_file": null,
+     "text": "5. Gas Cutting\nThe roughness of the cut edges is to meet the following requirements:\nWelding Edges:\nStandard Limit\nStrength Members 400 µm 800 µm\nOthers 800 µm 1500 µm"
+    },
+    {
+     "rank": 3,
+     "chunk_id": "p4-1.1-01",
+     "pdf_page": 4,
+     "score": 3.0,
+     "wiki_file": null,
+     "text": "1.1 This standard provides guidance on shipbuilding quality standards for the hull structure\nduring new construction and the remedial standard where the quality standard is not met.\nWhereas the standard generally applies to\n- conventional merchant ship types,\n- parts of hull covered by the rules of the Classification Society,\n- hull structures constructed from normal and higher strength hull structural steel,\nthe applicability of the standard is in each case to be agreed upon by the Classification\nSociety.\nThe standard does generally not apply to the new construction of\n- special types of ships as e.g. gas tankers\n- structures fabricated from stainless steel or other, special types or grades of steel"
+    }
+   ],
+   "decision": "answer",
+   "answer": "Free Edges: Standard Limit Strength Members 150 µm 300 µm",
+   "supporting_pdf_pages": [
+    8
+   ],
+   "citations": [
+    {
+     "chunk_id": "p8-5-01",
+     "section": "5",
+     "pdf_pages": [
+      8
+     ],
+     "wiki_file": null
+    }
+   ],
+   "coverage": 0.8885,
+   "laya_decision": null,
+   "judgment": {
+    "answerable": true,
+    "retrieval_hit": true,
+    "correct_answer": true,
+    "correct_abstention": null,
+    "failure": null
+   }
+  },
+  {
+   "question_id": "q9",
+   "split": "test",
+   "system": "pdf",
+   "method": "keyword",
+   "question": "What is the purchase price of a steel plate from EXTAA supplier A?",
+   "expected_pdf_pages": [],
+   "retrieved_chunks": [
+    {
+     "rank": 1,
+     "chunk_id": "p4-1.1-01",
+     "pdf_page": 4,
+     "score": 1.0,
+     "wiki_file": null,
+     "text": "1.1 This standard provides guidance on shipbuilding quality standards for the hull structure\nduring new construction and the remedial standard where the quality standard is not met.\nWhereas the standard generally applies to\n- conventional merchant ship types,\n- parts of hull covered by the rules of the Classification Society,\n- hull structures constructed from normal and higher strength hull structural steel,\nthe applicability of the standard is in each case to be agreed upon by the Classification\nSociety.\nThe standard does generally not apply to the new construction of\n- special types of ships as e.g. gas tankers\n- structures fabricated from stainless steel or other, special types or grades of steel"
+    },
+    {
+     "rank": 2,
+     "chunk_id": "p7-4.2.2-01",
+     "pdf_page": 7,
+     "score": 1.0,
+     "wiki_file": null,
+     "text": "Imperfection surface area Ratio (%) is obtained as influenced area / area under consideration\n(i.e. plate surface area) x 100%.\nFor isolated surface discontinuities, influenced area is obtained by drawing a continuous line\nwhich follows the circumference of the discontinuity at a distance of 20 mm. (Figure 1)\nFor surface discontinuities appearing in a cluster, influenced area is obtained by drawing a\ncontinuous line which follows the circumference of the cluster at a distance of 20 mm. (Figure\n2)\nFigure 1 - Determination of the area influenced by an isolated\ndiscontinuity\n(EN 10163-1:2004)\nFigure 2 - Determination of the area influenced by clustered discontinuities\n(EN 10163-1:2004)"
+    },
+    {
+     "rank": 3,
+     "chunk_id": "p8-4.2.4.1-01",
+     "pdf_page": 8,
+     "score": 1.0,
+     "wiki_file": null,
+     "text": "4.2.4.1 Lamination\nInvestigation to be carried out at the steelmill into the cause and extent of the detected\nlaminations. Severe lamination is to be remedied by local insert plates. The minimum breadth\nor length of the plate to be replaced is to be:\n- 1600 mm for shell and strength deck plating in way of cruciform or T-joints,\n- 800 mm for shell, strength deck plating and other primary members,\n- 300 mm for other structural members.\nLocal limited lamination may be remedied by chipping and/or grinding followed by welding in\naccordance with sketch (a). In case where the local limited lamination is near the plate\nsurface, the remedial may be carried out as shown in sketch (b). For limitations see\nparagraph 4.2.2."
+    }
+   ],
+   "decision": "abstain",
+   "answer": "The supplied pages do not specify an answer.",
+   "supporting_pdf_pages": [],
+   "citations": [],
+   "coverage": 0.1514,
+   "laya_decision": null,
+   "judgment": {
+    "answerable": false,
+    "retrieval_hit": null,
+    "correct_answer": null,
+    "correct_abstention": true,
+    "failure": null
+   }
+  },
+  {
+   "question_id": "q10",
+   "split": "test",
+   "system": "pdf",
+   "method": "keyword",
+   "question": "What is the emergency telephone number for the shipyard?",
+   "expected_pdf_pages": [],
+   "retrieved_chunks": [
+    {
+     "rank": 1,
+     "chunk_id": "p4-1.5-01",
+     "pdf_page": 4,
+     "score": 1.0,
+     "wiki_file": null,
+     "text": "1.5 For use of this standard, fabrication fit-ups, deflections and similar quality attributes are\nintended to be uniformly distributed about the nominal values. The shipyard is to take\ncorrective action to improve work processes that produce measurements where a skew\ndistribution is evident. Relying upon remedial steps that truncate a skewed distribution of the\nquality attribute is unacceptable."
+    },
+    {
+     "rank": 2,
+     "chunk_id": "p4-1-01",
+     "pdf_page": 4,
+     "score": 0.0,
+     "wiki_file": null,
+     "text": "1. Scope\nIt is intended that these standards provide guidance where established and recognized\nshipbuilding or national standards accepted by the Classification Society do not exist."
+    },
+    {
+     "rank": 3,
+     "chunk_id": "p4-1.1-01",
+     "pdf_page": 4,
+     "score": 0.0,
+     "wiki_file": null,
+     "text": "1.1 This standard provides guidance on shipbuilding quality standards for the hull structure\nduring new construction and the remedial standard where the quality standard is not met.\nWhereas the standard generally applies to\n- conventional merchant ship types,\n- parts of hull covered by the rules of the Classification Society,\n- hull structures constructed from normal and higher strength hull structural steel,\nthe applicability of the standard is in each case to be agreed upon by the Classification\nSociety.\nThe standard does generally not apply to the new construction of\n- special types of ships as e.g. gas tankers\n- structures fabricated from stainless steel or other, special types or grades of steel"
+    }
+   ],
+   "decision": "abstain",
+   "answer": "The supplied pages do not specify an answer.",
+   "supporting_pdf_pages": [],
+   "citations": [],
+   "coverage": 0.2172,
+   "laya_decision": null,
+   "judgment": {
+    "answerable": false,
+    "retrieval_hit": null,
+    "correct_answer": null,
+    "correct_abstention": true,
+    "failure": null
+   }
+  }
+ ]
+}

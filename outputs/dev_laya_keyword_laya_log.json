@@ -1,0 +1,167 @@
+{
+ "laya_version": "0.4.15",
+ "checkpoint": "convaiinnovations/laya / typed-decisions",
+ "question_prompt_sha256": "c23bfb08f6a415d88fc4726e237dd714d009eec256d065564fedb3bf7a7438e6",
+ "entries": [
+  {
+   "question_id": "q1",
+   "label": "answer",
+   "error": null,
+   "input": "Question: Which ship types and hull steel types does this standard generally apply to?\n\nEvidence 1 (PDF page 4): 1.1 This standard provides guidance on shipbuilding quality standards for the hull structure\nduring new construction and the remedial standard where the quality standard is not met.\nWhereas the standard generally applies to\n- conventional merchant ship types,\n- parts of hull covered by the rules of the Classification Society,\n- hull structures constructed from normal and higher strength hull structural steel,\nthe applicability of the standard is in each case to be agreed upon by the Classification\nSociety.\nThe standard does generally not apply to the new construction of\n- special types of ships as e.g. gas tankers\n- structures fabricated from stainless steel or other, special types or grades of steel\n\nEvidence 2 (PDF page 4): 1.3 The standard covers typical construction methods and gives guidance on quality\nstandards for the most important aspects of such construction. Unless explicitly stated\nelsewhere in the standard, the level of workmanship reflected herein will in principle be\nacceptable for primary and secondary structure of conventional designs. A more stringent\nstandard may however be required for critical and highly stressed areas of the hull, and this is\nto be agreed with the Classification Society in each case. In assessing the criticality of hull\nstructure and structural components, reference is made to ref. A1, A2, A3, A11, A13, A14,\nA15, A16, A19 and A21.\n\nEvidence 3 (PDF page 4): 1. Scope\nIt is intended that these standards provide guidance where established and recognized\nshipbuilding or national standards accepted by the Classification Society do not exist.",
+   "output": {
+    "model": "laya-rl-agent",
+    "answers": {
+     "enough_evidence": {
+      "type": "choice",
+      "choice": "answer",
+      "probabilities": {
+       "answer": 0.6973,
+       "abstain": 0.3027
+      },
+      "confidence": 0.1154,
+      "answer_confidence": 0.6973,
+      "action": {
+       "act_probability": 1.0
+      }
+     }
+    },
+    "usage": {
+     "input_tokens": 411,
+     "output_tokens": 0,
+     "state_tokens": 356,
+     "state_tokens_dropped": 0,
+     "truncated": false,
+     "truncated_questions": []
+    }
+   }
+  },
+  {
+   "question_id": "q2",
+   "label": "answer",
+   "error": null,
+   "input": "Question: What is the difference between the Standard range and the Limit range?\n\nEvidence 1 (PDF page 4): 1.2 In this standard, both a \"Standard\" range and a \"Limit\" range are listed. The \"Standard\"\nrange represents the target range expected to be met in regular work under normal\ncircumstances. The \"Limit\" range represents the maximum allowable deviation from the\n\"Standard\" range. Work beyond the \"Standard\" range but within the \"Limit\" range is\nacceptable. In cases where no ‘limit’ value is specified, the value beyond the ‘standard’ range\nmay be accepted subject to the consideration of the Classification Society.\n\nEvidence 2 (PDF page 8): 5. Gas Cutting\nThe roughness of the cut edges is to meet the following requirements:\nFree Edges:\nStandard Limit\nStrength Members 150 µm 300 µm\nOthers 500 µm 1000 µm\n\nEvidence 3 (PDF page 8): 5. Gas Cutting\nThe roughness of the cut edges is to meet the following requirements:\nWelding Edges:\nStandard Limit\nStrength Members 400 µm 800 µm\nOthers 800 µm 1500 µm",
+   "output": {
+    "model": "laya-rl-agent",
+    "answers": {
+     "enough_evidence": {
+      "type": "choice",
+      "choice": "answer",
+      "probabilities": {
+       "answer": 0.8057,
+       "abstain": 0.1943
+      },
+      "confidence": 0.2896,
+      "answer_confidence": 0.8057,
+      "action": {
+       "act_probability": 1.0
+      }
+     }
+    },
+    "usage": {
+     "input_tokens": 295,
+     "output_tokens": 0,
+     "state_tokens": 240,
+     "state_tokens_dropped": 0,
+     "truncated": false,
+     "truncated_questions": []
+    }
+   }
+  },
+  {
+   "question_id": "q3",
+   "label": "answer",
+   "error": null,
+   "input": "Question: Which qualification standard is named for welders?\n\nEvidence 1 (PDF page 5): 3.1.1 Welders are to be qualified in accordance with UR W32 (ref.A18) or other recognized\nstandard accepted by the Classification Society.\nRecognition of other standards is subject to submission to the Classification Society for\nevaluation. Subcontractors are to keep records of welders qualification and, when required,\nfurnish valid approval test certificates.\n\nEvidence 2 (PDF page 4): 1.4 Details relevant to structures or fabrication procedures not covered by this standard are\nto be approved by the Classification Society on the basis of procedure qualifications and/or\nrecognized national standards.\n\nEvidence 3 (PDF page 5): 2.3 Welding of hull structures is to be carried out by qualified welders, according to\napproved and qualified welding procedures and with welding consumables approved by the\nClassification Society, see Section 3. Welding operations are to be carried out under proper\nsupervision by the shipbuilder. The working conditions for welding are to be monitored by the\nClassification Society in accordance with UR Z23 (ref. A12).",
+   "output": {
+    "model": "laya-rl-agent",
+    "answers": {
+     "enough_evidence": {
+      "type": "choice",
+      "choice": "answer",
+      "probabilities": {
+       "answer": 0.7747,
+       "abstain": 0.2253
+      },
+      "confidence": 0.2302,
+      "answer_confidence": 0.7747,
+      "action": {
+       "act_probability": 1.0
+      }
+     }
+    },
+    "usage": {
+     "input_tokens": 298,
+     "output_tokens": 0,
+     "state_tokens": 243,
+     "state_tokens_dropped": 0,
+     "truncated": false,
+     "truncated_questions": []
+    }
+   }
+  },
+  {
+   "question_id": "q4",
+   "label": "answer",
+   "error": null,
+   "input": "Question: Who approves materials used for structural members?\n\nEvidence 1 (PDF page 5): 4.1 Materials for Structural Members\nAll materials, including weld consumables, to be used for the structural members are to be\napproved by the Classification Society as per the approved construction drawings and meet\nthe respective IACS Unified Requirements (see ref. A4, A5, A6, A7, A8, A9 and A17).\nAdditional recommendations are contained in the following paragraphs.\nAll materials used should be manufactured at a works approved by the Classification Society\nfor the type and grade supplied.\n\nEvidence 2 (PDF page 8): 4.2.4.1 Lamination\nInvestigation to be carried out at the steelmill into the cause and extent of the detected\nlaminations. Severe lamination is to be remedied by local insert plates. The minimum breadth\nor length of the plate to be replaced is to be:\n- 1600 mm for shell and strength deck plating in way of cruciform or T-joints,\n- 800 mm for shell, strength deck plating and other primary members,\n- 300 mm for other structural members.\nLocal limited lamination may be remedied by chipping and/or grinding followed by welding in\naccordance with sketch (a). In case where the local limited lamination is near the plate\nsurface, the remedial may be carried out as shown in sketch (b). For limitations see\nparagraph 4.2.2.\n\nEvidence 3 (PDF page 4): 1.1 This standard provides guidance on shipbuilding quality standards for the hull structure\nduring new construction and the remedial standard where the quality standard is not met.\nWhereas the standard generally applies to\n- conventional merchant ship types,\n- parts of hull covered by the rules of the Classification Society,\n- hull structures constructed from normal and higher strength hull structural steel,\nthe applicability of the standard is in each case to be agreed upon by the Classification\nSociety.\nThe standard does generally not apply to the new construction of\n- special types of ships as e.g. gas tankers\n- structures fabricated from stainless steel or other, special types or grades of steel",
+   "output": {
+    "model": "laya-rl-agent",
+    "answers": {
+     "enough_evidence": {
+      "type": "choice",
+      "choice": "answer",
+      "probabilities": {
+       "answer": 0.8508,
+       "abstain": 0.1492
+      },
+      "confidence": 0.3921,
+      "answer_confidence": 0.8508,
+      "action": {
+       "act_probability": 1.0
+      }
+     }
+    },
+    "usage": {
+     "input_tokens": 515,
+     "output_tokens": 0,
+     "state_tokens": 460,
+     "state_tokens_dropped": 0,
+     "truncated": false,
+     "truncated_questions": []
+    }
+   }
+  },
+  {
+   "question_id": "q5",
+   "label": "answer",
+   "error": null,
+   "input": "Question: How is the depth of a surface imperfection measured?\n\nEvidence 1 (PDF page 6): 4.2.1 Definitions\nMinor Imperfections: Pitting, rolled-in scale, indentations, roll marks, scratches\nand grooves\nDefects: Cracks, shells, sand patches, sharp edged seams and minor\nimperfections exceeding the limits of table 1\nDepth of Imperfections or The depth is to be measured from the surface of the product\ndefects:\n\nEvidence 2 (PDF page 6): 4.2.2 Acceptance without remedies\nMinor imperfections, in accordance with the nominal thickness (t) of the product and the limits\ndescribed in Table 1, are permissible and may be left as they are.\nImperfection surface area Ratio(%) 15～20% 5～15% 0～5%\nt < 20 mm 0.2 mm 0.4 mm 0.5 mm\n20 mm ≤ t < 50 mm 0.2 mm 0.6 mm 0.7 mm\n50 mm ≤ t 0.2 mm 0.7 mm 0.9 mm\nTable 1 Limits for depth of minor imperfection, for acceptance without remedies\n\nEvidence 3 (PDF page 7): Imperfection surface area Ratio (%) is obtained as influenced area / area under consideration\n(i.e. plate surface area) x 100%.\nFor isolated surface discontinuities, influenced area is obtained by drawing a continuous line\nwhich follows the circumference of the discontinuity at a distance of 20 mm. (Figure 1)\nFor surface discontinuities appearing in a cluster, influenced area is obtained by drawing a\ncontinuous line which follows the circumference of the cluster at a distance of 20 mm. (Figure\n2)\nFigure 1 - Determination of the area influenced by an isolated\ndiscontinuity\n(EN 10163-1:2004)\nFigure 2 - Determination of the area influenced by clustered discontinuities\n(EN 10163-1:2004)",
+   "output": {
+    "model": "laya-rl-agent",
+    "answers": {
+     "enough_evidence": {
+      "type": "choice",
+      "choice": "answer",
+      "probabilities": {
+       "answer": 0.6756,
+       "abstain": 0.3244
+      },
+      "confidence": 0.0909,
+      "answer_confidence": 0.6756,
+      "action": {
+       "act_probability": 1.0
+      }
+     }
+    },
+    "usage": {
+     "input_tokens": 475,
+     "output_tokens": 0,
+     "state_tokens": 420,
+     "state_tokens_dropped": 0,
+     "truncated": false,
+     "truncated_questions": []
+    }
+   }
+  }
+ ]
+}
