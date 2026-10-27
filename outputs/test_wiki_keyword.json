@@ -3,6 +3,22 @@
   "split": "test",
   "system": "wiki",
   "method": "keyword",
+  "fingerprint": {
+   "combined": "2c1fa9a21d8c59627df3ada560a450b2759af2e770e77ac466c17d0574f5f000",
+   "files": {
+    "config.py": "8ea4ce9a090138f26cbf59b1ab5ebc1bb7aada27d4957f2ed8db63b280c760fe",
+    "retrieve.py": "4882c049e8a227a51b54e2725ff086b31d2d67ae1d3c55f814cec644ec7062fe",
+    "answer.py": "d9e86472a167ea7c26b0fce768c0a765d3f8c6bdf31bbc151d06fa0b69dc5ba6",
+    "pdf_to_chunks.py": "cd5e7fc2b3b570c2314837beb91c9aa4fc8bb3d013c5da7154e31c23ff55cfaf",
+    "data/questions.json": "143ef2468f34da975110244dc10e2a1cc5c4dbcac53c973b118b8b5c2579c3cd",
+    "data/answer_keys.json": "817dc67bc462f41b4e5f5fcdef826f8ddfc3e2ea0efff2228c56d4cf9dac1125",
+    "wiki/index.md": "d8c7fbb0e65b76288fc1c3bf65ee8893e40c14be4ade459cd92c929961158cac",
+    "wiki/materials-and-standards.md": "f56600f261a2d879848f6ec2d33e8de67bba3cc7ce8539b71d310948edf499e5",
+    "wiki/surface-quality-and-cutting.md": "f094f3a3405dafbbf1f59edbe832b4e6162816adeb3cc799970ae3ed9c2b5758",
+    "wiki/welder-qualifications.md": "11cc1f1600e66bdab644b991e0297e476c5fe545167c055295a69b912306f9fb",
+    "prompts/wiki_prompt.md": "c8efdfafc3f1acbe0b0ed20854d4e9190f376363e5db4bfd0febf9901d5d83d4"
+   }
+  },
   "settings": {
    "TOP_K": 3,
    "COVERAGE_THRESHOLD": 0.5,
@@ -19,7 +35,7 @@
    "laya": "not installed",
    "anthropic": "not installed"
   },
-  "git_commit": "none"
+  "git_commit": "566e51a2315dbe3cbcdb543eac32f8d3bc5ec5d0"
  },
  "summary": {
   "answerable": 3,
@@ -31,40 +47,43 @@
  },
  "results": [
   {
-   "id": "q6",
+   "question_id": "q6",
+   "split": "test",
+   "system": "wiki",
+   "method": "keyword",
    "question": "What training records must be kept for operators using fully mechanized or fully automatic welding processes?",
-   "expected_pages": [
+   "expected_pdf_pages": [
     5
    ],
-   "retrieved": [
+   "retrieved_chunks": [
     {
      "rank": 1,
+     "chunk_id": "welder-qualifications-09",
+     "pdf_page": 5,
      "score": 7.0,
-     "id": "welder-qualifications-09",
-     "page": 5,
-     "file": "wiki/welder-qualifications.md",
+     "wiki_file": "wiki/welder-qualifications.md",
      "text": "Welding operators using fully mechanized or fully automatic processes need generally not pass approval testing provided that the production welds made by the operators are of the required quality."
     },
     {
      "rank": 2,
+     "chunk_id": "welder-qualifications-14",
+     "pdf_page": 5,
      "score": 4.0,
-     "id": "welder-qualifications-14",
-     "page": 5,
-     "file": "wiki/welder-qualifications.md",
+     "wiki_file": "wiki/welder-qualifications.md",
      "text": "Records of operators and their current certificates are to be kept and made available to the Surveyor for inspection."
     },
     {
      "rank": 3,
+     "chunk_id": "welder-qualifications-11",
+     "pdf_page": 5,
      "score": 3.0,
-     "id": "welder-qualifications-11",
-     "page": 5,
-     "file": "wiki/welder-qualifications.md",
+     "wiki_file": "wiki/welder-qualifications.md",
      "text": "Records of training and operation experience shall be maintained on individual operator’s files and records, and be made available to the Classification Society for inspection when requested."
     }
    ],
    "decision": "answer",
    "answer": "Welding operators using fully mechanized or fully automatic processes need generally not pass approval testing provided that the production welds made by the operators are of the required quality.",
-   "pages": [
+   "supporting_pdf_pages": [
     5
    ],
    "citations": [
@@ -77,8 +96,8 @@
      "wiki_file": "wiki/welder-qualifications.md"
     }
    ],
-   "chunk_id": "welder-qualifications-09",
    "coverage": 0.6892,
+   "laya_decision": null,
    "judgment": {
     "answerable": true,
     "retrieval_hit": true,
@@ -88,40 +107,43 @@
    }
   },
   {
-   "id": "q7",
+   "question_id": "q7",
+   "split": "test",
+   "system": "wiki",
+   "method": "keyword",
    "question": "How should surface defects be remedied, and which IACS requirement is referenced?",
-   "expected_pages": [
+   "expected_pdf_pages": [
     8
    ],
-   "retrieved": [
+   "retrieved_chunks": [
     {
      "rank": 1,
+     "chunk_id": "surface-quality-and-cutting-09",
+     "pdf_page": 8,
      "score": 4.0,
-     "id": "surface-quality-and-cutting-09",
-     "page": 8,
-     "file": "wiki/surface-quality-and-cutting.md",
+     "wiki_file": "wiki/surface-quality-and-cutting.md",
      "text": "Defects are to be remedied by grinding and/or welding in accordance with IACS UR W11 (ref. A6)."
     },
     {
      "rank": 2,
+     "chunk_id": "surface-quality-and-cutting-11",
+     "pdf_page": 8,
      "score": 3.0,
-     "id": "surface-quality-and-cutting-11",
-     "page": 8,
-     "file": "wiki/surface-quality-and-cutting.md",
+     "wiki_file": "wiki/surface-quality-and-cutting.md",
      "text": "Severe lamination is to be remedied by local insert plates; the minimum breadth or length of the plate to be replaced is 1600 mm for shell and strength deck plating in way of cruciform or T-joints, 800 mm for shell, strength deck plating and other primary members, and 300 mm for other structural members."
     },
     {
      "rank": 3,
+     "chunk_id": "surface-quality-and-cutting-12",
+     "pdf_page": 8,
      "score": 3.0,
-     "id": "surface-quality-and-cutting-12",
-     "page": 8,
-     "file": "wiki/surface-quality-and-cutting.md",
+     "wiki_file": "wiki/surface-quality-and-cutting.md",
      "text": "Local limited lamination may be remedied by chipping and/or grinding followed by welding in accordance with sketch (a); where it is near the plate surface, the remedial may be carried out as shown in sketch (b). For limitations see paragraph 4.2.2."
     }
    ],
    "decision": "answer",
    "answer": "Defects are to be remedied by grinding and/or welding in accordance with IACS UR W11 (ref. A6).",
-   "pages": [
+   "supporting_pdf_pages": [
     8
    ],
    "citations": [
@@ -134,8 +156,8 @@
      "wiki_file": "wiki/surface-quality-and-cutting.md"
     }
    ],
-   "chunk_id": "surface-quality-and-cutting-09",
    "coverage": 0.6109,
+   "laya_decision": null,
    "judgment": {
     "answerable": true,
     "retrieval_hit": true,
@@ -145,40 +167,43 @@
    }
   },
   {
-   "id": "q8",
+   "question_id": "q8",
+   "split": "test",
+   "system": "wiki",
+   "method": "keyword",
    "question": "For gas-cut free edges on strength members, what are the Standard and Limit roughness values?",
-   "expected_pages": [
+   "expected_pdf_pages": [
     8
    ],
-   "retrieved": [
+   "retrieved_chunks": [
     {
      "rank": 1,
+     "chunk_id": "surface-quality-and-cutting-14",
+     "pdf_page": 8,
      "score": 8.0,
-     "id": "surface-quality-and-cutting-14",
-     "page": 8,
-     "file": "wiki/surface-quality-and-cutting.md",
+     "wiki_file": "wiki/surface-quality-and-cutting.md",
      "text": "The roughness of the cut edges is to meet the following requirements, given as Standard and Limit values for Free Edges and Welding Edges."
     },
     {
      "rank": 2,
+     "chunk_id": "surface-quality-and-cutting-15",
+     "pdf_page": 8,
      "score": 7.0,
-     "id": "surface-quality-and-cutting-15",
-     "page": 8,
-     "file": "wiki/surface-quality-and-cutting.md",
+     "wiki_file": "wiki/surface-quality-and-cutting.md",
      "text": "Free Edges:\nStandard Limit\nStrength Members 150 µm 300 µm\nOthers 500 µm 1000 µm"
     },
     {
      "rank": 3,
+     "chunk_id": "surface-quality-and-cutting-16",
+     "pdf_page": 8,
      "score": 6.0,
-     "id": "surface-quality-and-cutting-16",
-     "page": 8,
-     "file": "wiki/surface-quality-and-cutting.md",
+     "wiki_file": "wiki/surface-quality-and-cutting.md",
      "text": "Welding Edges:\nStandard Limit\nStrength Members 400 µm 800 µm\nOthers 800 µm 1500 µm"
     }
    ],
    "decision": "answer",
    "answer": "The roughness of the cut edges is to meet the following requirements, given as Standard and Limit values for Free Edges and Welding Edges.",
-   "pages": [
+   "supporting_pdf_pages": [
     8
    ],
    "citations": [
@@ -191,8 +216,8 @@
      "wiki_file": "wiki/surface-quality-and-cutting.md"
     }
    ],
-   "chunk_id": "surface-quality-and-cutting-14",
    "coverage": 0.7962,
+   "laya_decision": null,
    "judgment": {
     "answerable": true,
     "retrieval_hit": true,
@@ -202,41 +227,44 @@
    }
   },
   {
-   "id": "q9",
+   "question_id": "q9",
+   "split": "test",
+   "system": "wiki",
+   "method": "keyword",
    "question": "What is the purchase price of a steel plate from EXTAA supplier A?",
-   "expected_pages": [],
-   "retrieved": [
+   "expected_pdf_pages": [],
+   "retrieved_chunks": [
     {
      "rank": 1,
+     "chunk_id": "materials-and-standards-03",
+     "pdf_page": 4,
      "score": 1.0,
-     "id": "materials-and-standards-03",
-     "page": 4,
-     "file": "wiki/materials-and-standards.md",
+     "wiki_file": "wiki/materials-and-standards.md",
      "text": "The standard generally applies to conventional merchant ship types, parts of hull covered by the rules of the Classification Society, and hull structures constructed from normal and higher strength hull structural steel; the applicability of the standard is in each case to be agreed upon by the Classification Society."
     },
     {
      "rank": 2,
+     "chunk_id": "materials-and-standards-04",
+     "pdf_page": 4,
      "score": 1.0,
-     "id": "materials-and-standards-04",
-     "page": 4,
-     "file": "wiki/materials-and-standards.md",
+     "wiki_file": "wiki/materials-and-standards.md",
      "text": "The standard does generally not apply to the new construction of special types of ships as e.g. gas tankers, or structures fabricated from stainless steel or other, special types or grades of steel."
     },
     {
      "rank": 3,
+     "chunk_id": "surface-quality-and-cutting-06",
+     "pdf_page": 7,
      "score": 1.0,
-     "id": "surface-quality-and-cutting-06",
-     "page": 7,
-     "file": "wiki/surface-quality-and-cutting.md",
+     "wiki_file": "wiki/surface-quality-and-cutting.md",
      "text": "Imperfection surface area Ratio (%) is obtained as influenced area / area under consideration (i.e. plate surface area) x 100%."
     }
    ],
    "decision": "abstain",
    "answer": "The supplied pages do not specify an answer.",
-   "pages": [],
+   "supporting_pdf_pages": [],
    "citations": [],
-   "chunk_id": null,
    "coverage": 0.1419,
+   "laya_decision": null,
    "judgment": {
     "answerable": false,
     "retrieval_hit": null,
@@ -246,41 +274,44 @@
    }
   },
   {
-   "id": "q10",
+   "question_id": "q10",
+   "split": "test",
+   "system": "wiki",
+   "method": "keyword",
    "question": "What is the emergency telephone number for the shipyard?",
-   "expected_pages": [],
-   "retrieved": [
+   "expected_pdf_pages": [],
+   "retrieved_chunks": [
     {
      "rank": 1,
+     "chunk_id": "materials-and-standards-09",
+     "pdf_page": 4,
      "score": 1.0,
-     "id": "materials-and-standards-09",
-     "page": 4,
-     "file": "wiki/materials-and-standards.md",
+     "wiki_file": "wiki/materials-and-standards.md",
      "text": "The shipyard is to take corrective action to improve work processes that produce measurements where a skew distribution is evident; relying upon remedial steps that truncate a skewed distribution of the quality attribute is unacceptable."
     },
     {
      "rank": 2,
+     "chunk_id": "materials-and-standards-01",
+     "pdf_page": 4,
      "score": 0.0,
-     "id": "materials-and-standards-01",
-     "page": 4,
-     "file": "wiki/materials-and-standards.md",
+     "wiki_file": "wiki/materials-and-standards.md",
      "text": "It is intended that these standards provide guidance where established and recognized shipbuilding or national standards accepted by the Classification Society do not exist."
     },
     {
      "rank": 3,
+     "chunk_id": "materials-and-standards-02",
+     "pdf_page": 4,
      "score": 0.0,
-     "id": "materials-and-standards-02",
-     "page": 4,
-     "file": "wiki/materials-and-standards.md",
+     "wiki_file": "wiki/materials-and-standards.md",
      "text": "This standard provides guidance on shipbuilding quality standards for the hull structure during new construction and the remedial standard where the quality standard is not met."
     }
    ],
    "decision": "abstain",
    "answer": "The supplied pages do not specify an answer.",
-   "pages": [],
+   "supporting_pdf_pages": [],
    "citations": [],
-   "chunk_id": null,
    "coverage": 0.222,
+   "laya_decision": null,
    "judgment": {
     "answerable": false,
     "retrieval_hit": null,

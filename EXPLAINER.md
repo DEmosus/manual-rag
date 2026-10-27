@@ -107,9 +107,14 @@ The command-line entry point (`python run_eval.py dev|test|report ...`). For one
 1. loads the questions for that split (`data/questions.json`, exactly as supplied);
 2. loads chunks (PDF chunks, or wiki chunks for `--system wiki`);
 3. for every question: retrieve → answer (or retrieve → Laya → answer) → **judge**;
-4. writes `outputs/<split>_<system>_<method>.json` with, for each question, the three retrieved chunks (text, page,
-   score), the answer, the citations, the judgment, and run info (Python/package versions, git commit, settings);
-5. prints a short table. `test` runs refuse to overwrite an existing result unless `--force`.
+4. writes `outputs/<split>_<system>_<method>.json` with, for each question, the fields of the task's output contract
+   (`question_id`, `retrieved_chunks` [`chunk_id`, `pdf_page`, `text`, plus score/rank/wiki_file], `decision`, `answer`,
+   `supporting_pdf_pages`) plus citations and the judgment, and run info (Python/package versions, git commit, settings,
+   a fingerprint). It checks the contract rules on every record (an answer must have pages; an abstention must be the fixed
+   sentence with no pages). It also writes a readable `.md` in the task's format (Question / Method / Retrieved / Answer / Source);
+5. prints a short table. **Freeze guard:** a `test` run is refused unless a `dev` run exists with the same fingerprint (a hash
+   of config, retrieval and answer code, questions, keys, and the wiki files or Laya prompt for those systems), and it never
+   overwrites a finished test result without `--force`.
 
 If a model cannot be set up (no `sentence-transformers`, no `laya`, no internet), the file records
 `"status": "not_run"` plus the error, instead of pretending. `report` reads those files and builds `outputs/results.md`.
@@ -137,12 +142,13 @@ wiki (see section 7).
 
 ### `laya_gate.py` - Extension 1
 Wraps Laya (section 8). `build_state` writes the question and the three chunks (with page numbers) as one text;
-`LayaGate.decide` asks Laya one typed `choice` question with two labels, `answer` / `abstain`, and returns the label, the
+`LayaGate.decide` asks Laya one typed `choice` question (the text is in `prompts/laya_question.json`, so it can be hashed and
+frozen) with two labels, `answer` / `abstain`, and returns the label, the
 exact input sent, the raw output, and any error. Any failure (or an unexpected label) becomes `abstain` + a recorded error.
 
 ### The folders
-`data/` (questions as supplied; scoring keys) · `wiki/` (the wiki) · `prompts/` (the wiki prompt) · `outputs/` (everything
-produced) · `materials/` (put the PDF here; git-ignored) · `tests/test_all.py` (18 tests: chunking, both retrievers with a
+`data/` (questions as supplied; scoring keys) · `REPORT.md`, `PR_DESCRIPTION.md`, `run_all.sh` · `wiki/` (the wiki) · `prompts/` (the wiki prompt) · `outputs/` (everything
+produced) · `materials/` (put the PDF here; git-ignored) · `tests/test_all.py` (20 tests, incl. the output contract and the freeze guard: chunking, both retrievers with a
 fake encoder, answer/abstain, scoring, the wiki helpers, the Laya gate and its wiring with a fake agent).
 
 ## 4. Following one question through the code (dev q3, real values)
@@ -169,8 +175,8 @@ fixed refusal sentence with no pages. That is the whole point of separating *ran
 ## 5. Dev questions, test questions, and why they are kept apart
 Tuning on the questions you are graded on would inflate the score. So: the five **dev** questions (q1-q5) were used to
 improve the system; then settings were left alone and the five **test** questions (q6-q10) were run once. Three changes came
-from dev (written in README). `run_eval.py test` will not overwrite a finished test result without `--force`, which makes
-accidental re-tuning visible. Caveat (also in the README): this project is a rebuild of an earlier version whose test
+from dev (written in README). `run_eval.py test` refuses to run if anything it depends on changed since the last dev run
+(the fingerprint), and will not overwrite a finished test result without `--force`, which makes re-tuning on test visible. Caveat (also in the README): this project is a rebuild of an earlier version whose test
 questions had already been run, so this rebuild's test run is a reproduction, not a blind trial.
 
 ## 6. Reading the results (and why the failures happened)
@@ -224,7 +230,9 @@ label  = result["answers"]["enough_evidence"]["choice"]       # "answer" or "abs
    Label `abstain` → the fixed refusal sentence, no pages.
 4. If Laya cannot load, crashes, or returns an unknown label → abstain and store the error. Such abstentions are counted as
    "Laya runtime errors", never as correct abstentions.
-5. Every question's Laya input, raw output, label and error are saved in the result JSON, together with the Laya package version.
+5. Every question's Laya input, raw output, label and error are saved **separately** in
+   `outputs/<split>_laya_<method>_laya_log.json` (with the Laya version, checkpoint and a hash of the question prompt); the
+   application output only keeps the label and an error flag.
 
 *Why "with Laya" is empty in the results:* Laya needs `torch` and its weights from Hugging Face; the sandbox had neither, so
 the run is recorded as `not run`. What *was* tested: the gate's logic and the full pipeline path using a **fake agent**

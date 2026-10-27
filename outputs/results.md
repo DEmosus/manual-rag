@@ -11,13 +11,13 @@
 ## Extension 1 - Laya gate (retrieval = keyword)
 | Test | Task 1 baseline | With Laya |
 |---|---|---|
-| Correct supported answers | 2 / 3 | not run (model unavailable) |
-| Correct abstentions | 2 / 2 | not run (model unavailable) |
-| Laya runtime errors | n/a | not run (model unavailable) |
+| Correct supported answers / 3 | 2 / 3 | not run (model unavailable) |
+| Correct abstentions / 2 | 2 / 2 | not run (model unavailable) |
+| Laya runtime errors | N/A | not run (model unavailable) |
 
 ## Extension 2 - wiki (retrieval = keyword)
 | Test | PDF RAG | Wiki RAG |
 |---|---|---|
-| Correct supported answers | 2 / 3 | 1 / 3 |
-| Correct abstentions | 2 / 2 | 2 / 2 |
-| (dev) retrieval hits | 5 / 5 | 4 / 5 |
+| Correct supported answers / 3 | 2 / 3 | 1 / 3 |
+| Correct abstentions / 2 | 2 / 2 | 2 / 2 |
+| (dev) retrieval hits / 5 | 5 / 5 | 4 / 5 |

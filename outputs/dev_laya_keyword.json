@@ -1,28 +1,43 @@
 {
  "status": "not_run",
  "error": "ModuleNotFoundError(\"No module named 'laya'\")",
- "split": "dev",
- "system": "laya",
- "method": "keyword",
- "settings": {
-  "TOP_K": 3,
-  "COVERAGE_THRESHOLD": 0.5,
-  "MAX_SENTENCES": 5,
-  "SENTENCE_CUTOFF": 0.6
- },
- "n_chunks": 22,
- "python": "3.12.3",
- "packages": {
-  "pymupdf": "2.0",
-  "numpy": "2.4.4",
-  "sentence-transformers": "not installed",
-  "torch": "not installed",
-  "laya": "not installed",
-  "anthropic": "not installed"
- },
- "git_commit": "none",
- "laya": {
-  "repo": "convaiinnovations/laya",
-  "subfolder": "typed-decisions"
+ "info": {
+  "split": "dev",
+  "system": "laya",
+  "method": "keyword",
+  "fingerprint": {
+   "combined": "1121b6da1a33ed34b34a745613febd24cf07fd3fb41533d69d4669f48200678d",
+   "files": {
+    "config.py": "8ea4ce9a090138f26cbf59b1ab5ebc1bb7aada27d4957f2ed8db63b280c760fe",
+    "retrieve.py": "4882c049e8a227a51b54e2725ff086b31d2d67ae1d3c55f814cec644ec7062fe",
+    "answer.py": "d9e86472a167ea7c26b0fce768c0a765d3f8c6bdf31bbc151d06fa0b69dc5ba6",
+    "pdf_to_chunks.py": "cd5e7fc2b3b570c2314837beb91c9aa4fc8bb3d013c5da7154e31c23ff55cfaf",
+    "data/questions.json": "143ef2468f34da975110244dc10e2a1cc5c4dbcac53c973b118b8b5c2579c3cd",
+    "data/answer_keys.json": "817dc67bc462f41b4e5f5fcdef826f8ddfc3e2ea0efff2228c56d4cf9dac1125",
+    "laya_gate.py": "1e9fd5f9b01ab36631603e4eb923525d83c6f8743f9bb5dc45bd532e4408c2af",
+    "prompts/laya_question.json": "c23bfb08f6a415d88fc4726e237dd714d009eec256d065564fedb3bf7a7438e6"
+   }
+  },
+  "settings": {
+   "TOP_K": 3,
+   "COVERAGE_THRESHOLD": 0.5,
+   "MAX_SENTENCES": 5,
+   "SENTENCE_CUTOFF": 0.6
+  },
+  "n_chunks": 22,
+  "python": "3.12.3",
+  "packages": {
+   "pymupdf": "2.0",
+   "numpy": "2.4.4",
+   "sentence-transformers": "not installed",
+   "torch": "not installed",
+   "laya": "not installed",
+   "anthropic": "not installed"
+  },
+  "git_commit": "566e51a2315dbe3cbcdb543eac32f8d3bc5ec5d0",
+  "laya": {
+   "repo": "convaiinnovations/laya",
+   "subfolder": "typed-decisions"
+  }
  }
 }

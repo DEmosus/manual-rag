@@ -46,7 +46,7 @@ Keyword retrieval is the "selected" method because it is the only one with measu
 
 ```bash
 python -m venv .venv && source .venv/bin/activate
-pip install -r requirements.txt                     # pymupdf, numpy, pytest  (enough for Task 1 keyword + wiki)
+pip install -r requirements.txt                     # pinned: pymupdf==2.0, numpy==2.4.4, pytest==9.1.1 (Python 3.12.3)
 cp /path/to/IACS_47_Steel_Shipbuilding_Quality_2025.pdf materials/     # not committed to git
 pip install -r requirements-extras.txt              # OPTIONAL: embeddings, Laya, wiki generation (large downloads)
 ```
@@ -56,7 +56,7 @@ pip install -r requirements-extras.txt              # OPTIONAL: embeddings, Laya
 ```bash
 python pdf_to_chunks.py                              # 1. PDF pages 4-8 -> outputs/chunks.json
 python run_eval.py dev  --system pdf --method all    # 2. dev questions: keyword (and embedding if installed)
-python run_eval.py test --system pdf --method all    # 3. FINAL test run (refuses to overwrite; --force to redo)
+python run_eval.py test --system pdf --method all    # 3. FINAL test run (needs an identical dev run first; never overwrites)
 
 python wiki_tools.py                                 # Extension 2: check the wiki's links, citations, numbers
 python run_eval.py dev  --system wiki
@@ -66,7 +66,8 @@ python run_eval.py dev  --system laya                # Extension 1 (needs `laya`
 python run_eval.py test --system laya
 
 python run_eval.py report                            # tables -> outputs/results.md
-python -m pytest -q                                  # 18 tests
+python -m pytest -q                                  # 20 tests
+./run_all.sh                                         # the whole protocol, in the right order
 ```
 Optional: `python make_wiki.py` regenerates the wiki with an API (`ANTHROPIC_API_KEY`, `LLM_MODEL`) into `wiki_generated/`.
 
@@ -83,8 +84,12 @@ make_wiki.py       Extension 2 (optional): generate the wiki with an LLM API
 laya_gate.py       Extension 1: ask Laya "answer or abstain?"
 wiki/              the wiki (index + 3 topic pages)        prompts/wiki_prompt.md   the wiki-writing prompt
 data/              questions.json (as supplied), answer_keys.json (scoring keys)
-outputs/           chunks, per-question results (retrieved text, scores, answers), results.md
-tests/test_all.py  18 tests
+outputs/           chunks; per-question results as .json (contract fields) and .md (task's Question/Method/Retrieved/Answer/Source format);
+                   Laya input/output/error log; results.md
+tests/test_all.py  20 tests
+REPORT.md          the short report (approach, results, limitations, time, AI help)
+PR_DESCRIPTION.md  ready-to-paste pull-request text   run_all.sh   the protocol in order
+prompts/laya_question.json   the frozen Laya question (labels answer / abstain)
 ```
 
 ## How an answer is produced (one paragraph)
@@ -97,8 +102,12 @@ expected page.
 
 ## Dev vs test discipline
 
-Settings in `config.py` and the helpers were tuned using the five **dev** questions only; the five **test** questions
-were run once per system (`run_eval.py test` refuses to overwrite a result unless `--force`). Changes made during dev:
+Settings in `config.py` and the helpers were tuned using the five **dev** questions only. `run_eval.py test` enforces the freeze:
+it runs only if a dev result exists whose fingerprint (hash of config, retrieval and answer code, questions, keys and - per
+system - the wiki files or the Laya prompt) equals the current one, and it never overwrites a finished test result without
+`--force`. **Selection order:** run dev for *both* retrievers, pick one from the dev numbers (`SELECTED_METHOD` in `config.py`),
+then run the extensions and test (`run_all.sh` does this). In the build sandbox embeddings could not run, so keyword was
+selected by default, not by comparison - rerun with embeddings available if you want the real comparison. Changes made during dev:
 stop-words `difference`/`between` (dev q2 abstained), `MAX_SENTENCES` 3 -> 5 (dev q2 lost a sentence), stemmer rule for
 `qualification ~ qualified` (found while testing dev q3). This simplified project is a rebuild of an earlier, larger
 build; the rebuild reproduced the earlier dev and test numbers exactly, and its test run was therefore not "blind":
@@ -132,6 +141,9 @@ after any evaluation. `python wiki_tools.py` passes (44 claims). A human should 
 * Laya: `requirements-extras.txt` pins `laya==0.4.15` (the release whose README the code follows). Checkpoint:
   `convaiinnovations/laya`, subfolder `typed-decisions`. `run_eval.py` records the installed Laya version in every
   Laya run; record the Hugging Face revision yourself when you run it.
-* Time spent: not measured by the assistant. Enter your own figure here: ______
+* Laya memory/download (estimates, not measured): checkpoint ~0.85 GB at fp16 (421M parameters; ~1.7 GB if loaded as fp32) plus
+  `torch` (about 1-2 GB of wheels on CPU); the embedding model is ~90 MB. Laya input/output/error for every question is saved
+  separately in `outputs/<split>_laya_<method>_laya_log.json`; the Laya question is frozen in `prompts/laya_question.json`.
+* Time spent: not measured by the assistant. Enter your own figure here: ______  (also in REPORT.md)
 * AI help: the whole project (code, tests, wiki, scoring keys, docs) was written by Claude in chat; the tests and evaluations
-  were run in a sandbox (18 tests pass).
+  were run in a sandbox (20 tests pass).
