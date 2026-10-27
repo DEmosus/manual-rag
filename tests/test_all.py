@@ -159,7 +159,7 @@ def test_laya_gate_labels_errors_and_input():
 CITE = "(Source: IACS Rec. 47, PDF page {p}.)"
 
 
-def make_wiki(tmp, body):
+def build_wiki(tmp, body):
     names = ["welder-qualifications.md", "materials-and-standards.md", "surface-quality-and-cutting.md"]
     (tmp / "index.md").write_text("\n".join(f"- [t]({n})" for n in names))
     for n in names:
@@ -172,7 +172,7 @@ def make_wiki(tmp, body):
 
 def test_wiki_loader_and_validator(tmp_path):
     ok = "- Welders use UR W32. " + CITE.format(p=4)
-    pages = make_wiki(tmp_path, ok)
+    pages = build_wiki(tmp_path, ok)
     assert validate_wiki(tmp_path, pages) == []
     assert split_citation("x (Source: A, PDF pages 4 and 5.)") == ("x", [4, 5])
     (tmp_path / "welder-qualifications.md").write_text(
@@ -186,7 +186,7 @@ def test_wiki_loader_and_validator(tmp_path):
 def test_wiki_validator_catches_problems(tmp_path):
     bad = ("- No citation.\n- Out of range. " + CITE.format(p=9) + "\n- Invented 999 mm. " + CITE.format(p=4)
            + "\n- Link [x](missing.md). " + CITE.format(p=4))
-    problems = " ".join(validate_wiki(tmp_path, make_wiki(tmp_path, bad)))
+    problems = " ".join(validate_wiki(tmp_path, build_wiki(tmp_path, bad)))
     assert "no citation" in problems and "outside" in problems and "number 999" in problems and "broken link" in problems
 
 
@@ -252,3 +252,39 @@ def test_freeze_guard(monkeypatch, tmp_path):
     monkeypatch.setattr(run_eval, "fingerprint", lambda s: {"combined": "different", "files": {}})
     with pytest.raises(SystemExit):                                               # ...so test is refused
         run_eval.evaluate("test", "pdf", "keyword")
+
+
+# ---- final-version behaviour
+@needs_pdf
+def test_stale_not_run_marker_does_not_block_test_run(monkeypatch, tmp_path):
+    import run_eval
+    monkeypatch.setattr(run_eval, "OUT", tmp_path)
+    run_eval.evaluate("dev", "pdf", "keyword")
+    fp = run_eval.fingerprint("pdf")
+    (tmp_path / "test_pdf_keyword.json").write_text(json.dumps({"status": "not_run", "error": "x", "info": {"fingerprint": fp}}))
+    assert run_eval.evaluate("test", "pdf", "keyword")["answerable"] == 3          # marker overwritten, no --force needed
+    with pytest.raises(SystemExit):                                                 # a real result is still protected
+        run_eval.evaluate("test", "pdf", "keyword")
+
+
+def test_report_fills_markers_and_handles_missing_runs(monkeypatch, tmp_path):
+    import run_eval
+    monkeypatch.setattr(run_eval, "OUT", tmp_path)
+    doc = tmp_path / "doc.md"
+    doc.write_text(f"before\n{run_eval.START}\nold\n{run_eval.END}\nafter\n")
+    run_eval.inject(doc, run_eval.results_body())
+    text = doc.read_text()
+    assert "old" not in text and "not run yet" in text and text.startswith("before") and text.rstrip().endswith("after")
+
+
+def test_hf_revision_falls_back_without_network(monkeypatch):
+    import run_eval
+    monkeypatch.setitem(sys.modules, "huggingface_hub", None)
+    assert run_eval.hf_revision("x/y").startswith("unknown")
+
+
+def test_summary_counts_top3_on_expected_page():
+    rec = {"judgment": {"answerable": True, "retrieval_hit": True, "correct_answer": True},
+           "expected_pdf_pages": [5], "retrieved_chunks": [{"pdf_page": 5}, {"pdf_page": 4}, {"pdf_page": 5}]}
+    s = summarize([rec])
+    assert s["top3_on_expected_page"] == 2 and s["top3_total"] == 3

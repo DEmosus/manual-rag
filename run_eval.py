@@ -4,7 +4,7 @@
   python run_eval.py dev  --system wiki                        # Extension 2: search the wiki instead of the PDF
   python run_eval.py dev  --system laya                        # Extension 1: Laya decides answer/abstain
   python run_eval.py test --system pdf                         # final run (needs a dev run with identical code/settings)
-  python run_eval.py report                                    # comparison tables -> outputs/results.md
+  python run_eval.py report                                    # tables -> outputs/results.md, README.md, REPORT.md
 
 Freeze rule: `test` only runs if a dev result exists whose fingerprint (hash of config, retrieval, answer code, questions,
 keys and - per system - the wiki files or the Laya prompt) equals the current one, and it never overwrites a finished
@@ -86,7 +86,9 @@ def summarize(results):
     return {"answerable": len(ans), "retrieval_hits": sum(bool(r["judgment"]["retrieval_hit"]) for r in ans),
             "correct_answers": sum(bool(r["judgment"]["correct_answer"]) for r in ans),
             "unanswerable": len(una), "correct_abstentions": sum(bool(r["judgment"]["correct_abstention"]) for r in una),
-            "laya_errors": sum(1 for r in results if (r.get("laya_decision") or {}).get("error"))}
+            "laya_errors": sum(1 for r in results if (r.get("laya_decision") or {}).get("error")),
+            "top3_on_expected_page": sum(c["pdf_page"] in r["expected_pdf_pages"] for r in ans for c in r["retrieved_chunks"]),
+            "top3_total": sum(len(r["retrieved_chunks"]) for r in ans)}
 
 
 def check_contract(rec):
@@ -123,7 +125,7 @@ def write_readable(path, results, system, method):
 # ---------- running ----------
 def run_info():
     versions = {}
-    for pkg in ("pymupdf", "numpy", "sentence-transformers", "torch", "laya", "anthropic"):
+    for pkg in ("pymupdf", "numpy", "sentence-transformers", "transformers", "huggingface-hub", "torch", "laya"):
         try:
             versions[pkg] = metadata.version(pkg)
         except metadata.PackageNotFoundError:
@@ -135,11 +137,20 @@ def run_info():
     return {"python": platform.python_version(), "packages": versions, "git_commit": commit}
 
 
+def hf_revision(repo):
+    """Hugging Face commit hash of a model repo (the 'version' of downloaded weights); best effort, needs network."""
+    try:
+        from huggingface_hub import HfApi
+        return HfApi().model_info(repo).sha
+    except Exception as exc:
+        return f"unknown ({type(exc).__name__})"
+
+
 def evaluate(split, system, method, force=False):
     path = OUT / f"{split}_{system}_{method}.json"
     fp = fingerprint(system)
     if split == "test":                                          # ---- the freeze guard
-        if path.exists() and not force:
+        if path.exists() and not force and json.loads(path.read_text(encoding="utf-8")).get("status") != "not_run":
             sys.exit(f"{path} already exists (final result). Use --force to overwrite.")
         dev = OUT / f"dev_{system}_{method}.json"
         if not dev.exists():
@@ -154,8 +165,10 @@ def evaluate(split, system, method, force=False):
         "n_chunks": len(chunks), **run_info()}
     if method == "embedding":
         info["embedding_model"] = config.EMBEDDING_MODEL
+        info["embedding_model_revision"] = hf_revision(config.EMBEDDING_MODEL)
     if system == "laya":
-        info["laya"] = {"repo": config.LAYA_REPO, "subfolder": config.LAYA_SUBFOLDER}
+        info["laya"] = {"repo": config.LAYA_REPO, "subfolder": config.LAYA_SUBFOLDER,
+                        "checkpoint_revision": hf_revision(config.LAYA_REPO)}
     try:                                                         # set up the model parts; may legitimately be unavailable
         search = make_search(method, chunks)
         gate = None
@@ -210,6 +223,9 @@ def evaluate(split, system, method, force=False):
 
 
 # ---------- report ----------
+START, END = "<!-- RESULTS:START -->", "<!-- RESULTS:END -->"
+
+
 def load_run(split, system, method):
     p = OUT / f"{split}_{system}_{method}.json"
     return json.loads(p.read_text(encoding="utf-8")) if p.exists() else None
@@ -218,32 +234,85 @@ def load_run(split, system, method):
 def cell(split, system, method, key, denom=None):
     data = load_run(split, system, method)
     if data is None:
-        return "not run"
+        return "not run yet"
     if data.get("status") == "not_run":
         return "not run (model unavailable)"
-    return f"{data['summary'][key]} / {data['summary'][denom]}" if denom else str(data["summary"][key])
+    s = data["summary"]
+    if s.get(key) is None:
+        return "n/a"
+    return f"{s[key]} / {s[denom]}" if denom else str(s[key])
+
+
+def results_body():
+    sel = config.SELECTED_METHOD
+    task1 = [("Dev retrieval hits / 5", "dev", "retrieval_hits", "answerable"),
+             ("Dev correct supported answers / 5", "dev", "correct_answers", "answerable"),
+             ("Dev top-3 chunks on an expected page (extra)", "dev", "top3_on_expected_page", "top3_total"),
+             ("**Test retrieval hits / 3**", "test", "retrieval_hits", "answerable"),
+             ("Test correct supported answers / 3 (extra)", "test", "correct_answers", "answerable"),
+             ("**Test correct missing-evidence responses / 2**", "test", "correct_abstentions", "unanswerable")]
+    out = [f"Selected retrieval method for the extensions: **{sel}** (rule: README, \"Choosing the retrieval method\").", "",
+           "**Task 1 - keyword vs embedding**", "", "| Result | Keyword baseline | Embedding retrieval |", "|---|---|---|"]
+    out += [f"| {t} | {cell(sp, 'pdf', 'keyword', k, d)} | {cell(sp, 'pdf', 'embedding', k, d)} |" for t, sp, k, d in task1]
+    out += ["", f"**Extension 1 - Laya gate** (retrieval: {sel})", "", "| Result | Task 1 baseline | With Laya |", "|---|---|---|",
+            f"| Dev correct supported answers / 5 | {cell('dev', 'pdf', sel, 'correct_answers', 'answerable')} | {cell('dev', 'laya', sel, 'correct_answers', 'answerable')} |",
+            f"| **Test correct supported answers / 3** | {cell('test', 'pdf', sel, 'correct_answers', 'answerable')} | {cell('test', 'laya', sel, 'correct_answers', 'answerable')} |",
+            f"| **Test correct abstentions / 2** | {cell('test', 'pdf', sel, 'correct_abstentions', 'unanswerable')} | {cell('test', 'laya', sel, 'correct_abstentions', 'unanswerable')} |",
+            f"| **Laya runtime errors (test)** | N/A | {cell('test', 'laya', sel, 'laya_errors')} |",
+            f"| Laya runtime errors (dev) | N/A | {cell('dev', 'laya', sel, 'laya_errors')} |",
+            "", f"**Extension 2 - wiki** (retrieval: {sel})", "", "| Result | Task 1: PDF RAG | Wiki RAG |", "|---|---|---|",
+            f"| Dev retrieval hits / 5 | {cell('dev', 'pdf', sel, 'retrieval_hits', 'answerable')} | {cell('dev', 'wiki', sel, 'retrieval_hits', 'answerable')} |",
+            f"| Dev correct supported answers / 5 | {cell('dev', 'pdf', sel, 'correct_answers', 'answerable')} | {cell('dev', 'wiki', sel, 'correct_answers', 'answerable')} |",
+            f"| **Test correct supported answers / 3** | {cell('test', 'pdf', sel, 'correct_answers', 'answerable')} | {cell('test', 'wiki', sel, 'correct_answers', 'answerable')} |",
+            f"| **Test correct abstentions / 2** | {cell('test', 'pdf', sel, 'correct_abstentions', 'unanswerable')} | {cell('test', 'wiki', sel, 'correct_abstentions', 'unanswerable')} |"]
+    return "\n".join(out)
+
+
+def environment_text():
+    infos = {}
+    for split, system, method in [("test", "pdf", "keyword"), ("dev", "pdf", "keyword"), ("dev", "pdf", "embedding"),
+                                  ("dev", "laya", config.SELECTED_METHOD), ("test", "laya", config.SELECTED_METHOD)]:
+        data = load_run(split, system, method)
+        if data and "info" in data:
+            infos[(system, method)] = data["info"]
+    if not infos:
+        return ""
+    base = next(iter(infos.values()))
+    pk = ", ".join(f"{k} {v}" for k, v in base["packages"].items() if v != "not installed")
+    lines = ["", "**Environment of the last runs** (recorded in every `outputs/*.json`)", "", f"- Python {base['python']}; {pk}"]
+    for (system, method), info in infos.items():
+        if info.get("embedding_model"):
+            lines.append(f"- Embedding model: `{info['embedding_model']}` @ `{info.get('embedding_model_revision')}`")
+        if info.get("laya"):
+            lz = info["laya"]
+            lines.append(f"- Laya checkpoint: `{lz['repo']}` / `{lz['subfolder']}` @ `{lz.get('checkpoint_revision')}`")
+    seen, kept = set(), []
+    for ln in lines:                                             # drop duplicate lines but keep blank ones
+        if ln == "" or ln not in seen:
+            kept.append(ln)
+            seen.add(ln)
+    return "\n".join(kept)
+
+
+def inject(path, text):
+    """replace what is between the RESULTS markers of a markdown file (no-op if the file has no markers)"""
+    p = Path(path)
+    if not p.exists():
+        return
+    doc = p.read_text(encoding="utf-8")
+    a, b = doc.find(START), doc.find(END)
+    if a >= 0 and b > a:
+        p.write_text(doc[: a + len(START)] + "\n" + text + "\n" + doc[b:], encoding="utf-8")
 
 
 def report():
-    s = config.SELECTED_METHOD
-    lines = ["# Results (generated by `python run_eval.py report` from outputs/*.json)", "",
-             "## Task 1 - keyword vs embedding", "| | Keyword | Embedding |", "|---|---|---|"]
-    for label, split, key, denom in [("Dev retrieval hits", "dev", "retrieval_hits", "answerable"),
-                                     ("Test retrieval hits", "test", "retrieval_hits", "answerable"),
-                                     ("Test correct supported answers", "test", "correct_answers", "answerable"),
-                                     ("Test correct missing-evidence responses", "test", "correct_abstentions", "unanswerable")]:
-        lines.append(f"| {label} | {cell(split, 'pdf', 'keyword', key, denom)} | {cell(split, 'pdf', 'embedding', key, denom)} |")
-    lines += ["", f"## Extension 1 - Laya gate (retrieval = {s})", "| Test | Task 1 baseline | With Laya |", "|---|---|---|",
-              f"| Correct supported answers / 3 | {cell('test', 'pdf', s, 'correct_answers', 'answerable')} | {cell('test', 'laya', s, 'correct_answers', 'answerable')} |",
-              f"| Correct abstentions / 2 | {cell('test', 'pdf', s, 'correct_abstentions', 'unanswerable')} | {cell('test', 'laya', s, 'correct_abstentions', 'unanswerable')} |",
-              f"| Laya runtime errors | N/A | {cell('test', 'laya', s, 'laya_errors')} |",
-              "", f"## Extension 2 - wiki (retrieval = {s})", "| Test | PDF RAG | Wiki RAG |", "|---|---|---|",
-              f"| Correct supported answers / 3 | {cell('test', 'pdf', s, 'correct_answers', 'answerable')} | {cell('test', 'wiki', s, 'correct_answers', 'answerable')} |",
-              f"| Correct abstentions / 2 | {cell('test', 'pdf', s, 'correct_abstentions', 'unanswerable')} | {cell('test', 'wiki', s, 'correct_abstentions', 'unanswerable')} |",
-              f"| (dev) retrieval hits / 5 | {cell('dev', 'pdf', s, 'retrieval_hits', 'answerable')} | {cell('dev', 'wiki', s, 'retrieval_hits', 'answerable')} |"]
-    text = "\n".join(lines) + "\n"
-    (OUT / "results.md").write_text(text, encoding="utf-8")
-    print(text)
+    body = results_body() + "\n" + environment_text()
+    OUT.mkdir(exist_ok=True)
+    (OUT / "results.md").write_text("# Results (generated by `python run_eval.py report` from outputs/*.json)\n\n" + body + "\n",
+                                    encoding="utf-8")
+    for doc in ("README.md", "REPORT.md"):
+        inject(doc, body)
+    print(body)
 
 
 if __name__ == "__main__":
