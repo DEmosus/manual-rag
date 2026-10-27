@@ -1,8 +1,6 @@
-# OPTIONAL. Not installed in the build sandbox, so these versions are unverified by me.
-# Embedding retrieval (model: sentence-transformers/all-MiniLM-L6-v2, downloaded from Hugging Face, ~90 MB approx.)
+# Needed for embedding retrieval and Extension 1 (Laya). Exact versions of a finished run: requirements-lock.txt.
+# Embedding model: sentence-transformers/all-MiniLM-L6-v2 (downloaded from Hugging Face on first use, about 90 MB)
 sentence-transformers>=3.0
-# Extension 1 (Laya). 0.4.15 is the release whose README the code follows; it was never executed here.
-# It needs torch (large) and the checkpoint convaiinnovations/laya, subfolder typed-decisions (421M params, ~0.85 GB at fp16).
+# Extension 1: Laya package 0.4.15 (PyPI, author Convai Innovations). First use downloads the checkpoint
+# convaiinnovations/laya, subfolder typed-decisions (about 0.85 GB) and needs torch.
 laya==0.4.15
-# Wiki generation through an API (make_wiki.py); env vars ANTHROPIC_API_KEY and LLM_MODEL
-anthropic
